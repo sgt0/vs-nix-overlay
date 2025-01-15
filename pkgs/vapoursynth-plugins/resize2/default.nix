@@ -17,14 +17,26 @@ stdenv.mkDerivation {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-resize2";
     rev = "f2c97f8cff2e2adf56c1e8756cc8b81104ac9685";
-    hash = "sha256-fp+czxu599/czgQzqbQnlgerrnufmmSY4S4DmCqfbYw=";
+    hash = "sha256-CMTeaYtTlquqAEZ4zCzMF3S0doBdKK3fwFgLpDFN1PE=";
+    nativeBuildInputs = [
+      cacert
+      git
+      meson
+    ];
+    postFetch = ''
+      (
+        cd "$out"
+        for prj in subprojects/*.wrap; do
+          meson subprojects download "$(basename "$prj" .wrap)"
+          rm -rf subprojects/$(basename "$prj" .wrap)/.git
+        done
+      )
+    '';
   };
 
   NIX_CFLAGS_COMPILE = "-Wno-error=format-security -march=x86-64-v4";
 
   nativeBuildInputs = [
-    cacert
-    git
     pkg-config
     meson
     ninja
