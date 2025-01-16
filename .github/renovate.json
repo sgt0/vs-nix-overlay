@@ -6,8 +6,6 @@
     ":disableRateLimiting",
     ":semanticCommits"
   ],
-  "automerge": true,
-  "automergeStrategy": "rebase",
   "nix": {
     "enabled": true
   },
