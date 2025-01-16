@@ -14,6 +14,7 @@ with pkgs; let
     vapoursynthPlugins.ffms2
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.miscfilters
+    vapoursynthPlugins.removedirt
     vapoursynthPlugins.resize2
     vapoursynthPlugins.webp
   ];

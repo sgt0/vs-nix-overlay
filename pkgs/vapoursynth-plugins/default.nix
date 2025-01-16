@@ -15,6 +15,7 @@ lib.makeScope newScope (self:
         fpng = callPackage ./fpng {};
         miscfilters = callPackage ./miscfilters {};
         placebo = callPackage ./placebo {};
+        removedirt = callPackage ./removedirt {};
         resize2 = callPackage ./resize2 {};
         webp = callPackage ./webp {};
 
