@@ -8,13 +8,13 @@
 stdenv.mkDerivation rec {
   pname = "manipmv";
   # renovate: datasource=github-releases depName=Mikewando/manipulate-motion-vectors
-  version = "1.0.1";
+  version = "1.1.0";
 
   src = fetchFromGitHub {
     owner = "Mikewando";
     repo = "manipulate-motion-vectors";
     rev = "refs/tags/${version}";
-    hash = "sha256-pWihJAEgvZmPaEk1EuOY4QZdu/AOrW1VCBlIeIvNRmY=";
+    hash = "sha256-XxYf/F2J3mcaRAKltlXjwHhTt4+b5zfjGXUw26cfEIw=";
   };
 
   nativeBuildInputs = [
