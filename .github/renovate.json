@@ -24,8 +24,9 @@
       "fileMatch": ["^pkgs/.+/default.nix$"],
       "matchStrings": [
 	      "version\\s*=\\s*\"(?<currentValue>.*?)\";",
-	      "datasource=(?<datasource>[^\\s]+)",
-	      "depName=(?<depName>[^\\s]+)"
+	      "datasource=(?<datasource>\\S+)",
+	      "depName=(?<depName>\\S+)",
+	      "extractVersion=(?<extractVersion>\\S+)"
       ],
       "matchStringsStrategy": "combination",
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}"
