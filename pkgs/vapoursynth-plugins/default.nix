@@ -19,6 +19,7 @@ lib.makeScope newScope (self:
         webp = callPackage ./webp {};
 
         # Requires Zig nightly.
+        # manipmv = callPackage ./manipmv {};
         # vszip = callPackage ./vszip {};
       }
       // lib.optionalAttrs config.allowAliases {
