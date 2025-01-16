@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
     owner = "dnjulek";
     repo = "vapoursynth-zip";
     rev = "refs/tags/R${version}";
-    hash = "sha256-/X65vQePLkeqqo6HLwn6aaMQLszYtbxry8R8ftPsvmw=";
+    hash = "sha256-YwC78Yw4r3TJg9CKgVuNlF7/5tratnoKMr9Rgfz/60k=";
   };
 
   nativeBuildInputs = [
