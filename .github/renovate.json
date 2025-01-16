@@ -25,7 +25,7 @@
       "matchStrings": [
 	      "version\\s*=\\s*\"(?<currentValue>.*?)\";",
 	      "datasource=(?<datasource>[^\\s]+)",
-	      "depName=(?<depName>[^,\n]+)"
+	      "depName=(?<depName>[^\\s]+)"
       ],
       "matchStringsStrategy": "combination",
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}"
