@@ -6,16 +6,16 @@
 rustPlatform.buildRustPackage rec {
   pname = "webp";
   # renovate: datasource=github-releases depName=sgt0/vapoursynth-webp
-  version = "1.0.2";
+  version = "1.0.4";
 
   src = fetchFromGitHub {
     owner = "sgt0";
     repo = "vapoursynth-webp";
     rev = "refs/tags/v${version}";
-    hash = "sha256-JmRN7v9X23AibGMphGjoYBZ4mZSVA+iHoEnl7i8PP8o=";
+    hash = "sha256-Jx7/RBmyOYrxNpMBBBB0hlpFD4JCSCPMdG9uoymyjso=";
   };
 
-  cargoHash = "sha256-vc/HIFyvMKZvnqp4awmmngECFMzvdVuudFTFhCpznQk=";
+  cargoHash = "sha256-rlnAD68LuwoRjGedYFS8lEi/9YKvvPB4mP+9X3XZlyc=";
 
   postInstall = ''
     mkdir $out/lib/vapoursynth
