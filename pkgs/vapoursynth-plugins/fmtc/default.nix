@@ -7,7 +7,7 @@
 }:
 stdenv.mkDerivation {
   pname = "fmtc";
-  version = "30-unstable-2024-01-04";
+  version = "30-unstable-2025-01-19";
 
   src = fetchFromGitLab {
     owner = "EleonoreMizo";
