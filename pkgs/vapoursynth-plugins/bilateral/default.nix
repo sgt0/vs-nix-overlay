@@ -8,7 +8,7 @@
 }:
 stdenv.mkDerivation {
   pname = "bilateral";
-  version = "3-unstable-2024-01-03";
+  version = "3-unstable-2025-01-19";
 
   src = fetchFromGitHub {
     owner = "HomeOfVapourSynthEvolution";
