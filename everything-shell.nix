@@ -12,6 +12,7 @@ with pkgs; let
     vapoursynthPlugins.bilateral
     vapoursynthPlugins.bs
     vapoursynthPlugins.colorbars
+    vapoursynthPlugins.descale
     vapoursynthPlugins.ffms2
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.miscfilters
