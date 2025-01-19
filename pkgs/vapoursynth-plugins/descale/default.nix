@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "descale";
-  version = "10-unstable-2024-01-19";
+  version = "10-unstable-2025-01-19";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
