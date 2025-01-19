@@ -8,6 +8,7 @@ lib.makeScope newScope (self:
       {
         bilateral = callPackage ./bilateral {};
         bs = callPackage ./bs {};
+        colorbars = callPackage ./colorbars {};
         ffms2 = callPackage ./ffms2 {};
         fftspectrum = callPackage ./fftspectrum {};
         fh = callPackage ./fh {};

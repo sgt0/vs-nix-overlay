@@ -11,6 +11,7 @@ with pkgs; let
   vapoursynth = pkgs.vapoursynth.withPlugins [
     vapoursynthPlugins.bilateral
     vapoursynthPlugins.bs
+    vapoursynthPlugins.colorbars
     vapoursynthPlugins.ffms2
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.miscfilters
