@@ -10,7 +10,7 @@
 }:
 stdenv.mkDerivation {
   pname = "fftspectrum";
-  version = "1-unstable-2024-01-03";
+  version = "1-unstable-2025-01-19";
 
   outputs = [
     "out"
