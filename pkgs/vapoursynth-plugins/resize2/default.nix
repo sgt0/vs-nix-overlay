@@ -11,7 +11,7 @@
 }:
 stdenv.mkDerivation {
   pname = "resize2";
-  version = "0.3.1-unstable-2024-01-03";
+  version = "0.3.1-unstable-2025-01-19";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
