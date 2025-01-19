@@ -15,6 +15,7 @@ lib.makeScope newScope (self:
         fh = callPackage ./fh {};
         fmtc = callPackage ./fmtc {};
         fpng = callPackage ./fpng {};
+        median = callPackage ./median {};
         miscfilters = callPackage ./miscfilters {};
         placebo = callPackage ./placebo {};
         placebo_sgt0 = callPackage ./placebo_sgt0 {};
