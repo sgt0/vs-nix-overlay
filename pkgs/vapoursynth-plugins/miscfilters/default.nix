@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "miscfilters";
-  version = "2-unstable-2024-01-03";
+  version = "2-unstable-2025-01-19";
 
   src = fetchFromGitHub {
     owner = "vapoursynth";
