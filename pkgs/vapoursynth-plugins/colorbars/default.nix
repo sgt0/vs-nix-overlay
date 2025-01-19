@@ -8,7 +8,7 @@
 }:
 stdenv.mkDerivation {
   pname = "colorbars";
-  version = "4-unstable-2024-01-19";
+  version = "4-unstable-2025-01-19";
 
   src = fetchFromGitHub {
     owner = "ifb";
