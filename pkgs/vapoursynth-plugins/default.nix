@@ -6,8 +6,8 @@
 lib.makeScope newScope (self:
     with self;
       {
-        bestsource = callPackage ./bestsource {};
         bilateral = callPackage ./bilateral {};
+        bs = callPackage ./bs {};
         ffms2 = callPackage ./ffms2 {};
         fftspectrum = callPackage ./fftspectrum {};
         fh = callPackage ./fh {};
@@ -25,5 +25,6 @@ lib.makeScope newScope (self:
         # vszip = callPackage ./vszip {};
       }
       // lib.optionalAttrs config.allowAliases {
-        # Aliases could go here.
+        # Aliases.
+        bestsource = bs;
       })

@@ -9,8 +9,8 @@
 }:
 with pkgs; let
   vapoursynth = pkgs.vapoursynth.withPlugins [
-    vapoursynthPlugins.bestsource
     vapoursynthPlugins.bilateral
+    vapoursynthPlugins.bs
     vapoursynthPlugins.ffms2
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.miscfilters

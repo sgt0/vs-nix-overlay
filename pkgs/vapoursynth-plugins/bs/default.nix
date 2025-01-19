@@ -10,7 +10,7 @@
   xxHash,
 }:
 stdenv.mkDerivation rec {
-  pname = "bestsource";
+  pname = "bs";
   # renovate: datasource=github-releases depName=vapoursynth/bestsource
   version = "10";
 
