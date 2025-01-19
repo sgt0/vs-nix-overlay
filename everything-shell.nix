@@ -2,6 +2,7 @@
 {
   pkgs ?
     import <nixpkgs> {
+      config.allowUnfree = true;
       overlays = [
         (import ./overlay.nix)
       ];
@@ -15,6 +16,7 @@ with pkgs; let
     vapoursynthPlugins.descale
     vapoursynthPlugins.ffms2
     vapoursynthPlugins.fftspectrum
+    vapoursynthPlugins.median
     vapoursynthPlugins.miscfilters
     vapoursynthPlugins.placebo
     vapoursynthPlugins.removedirt
