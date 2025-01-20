@@ -8,7 +8,7 @@
 stdenv.mkDerivation rec {
   pname = "manipmv";
   # renovate: datasource=github-releases depName=Mikewando/manipulate-motion-vectors
-  version = "1.1.0";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "Mikewando";
