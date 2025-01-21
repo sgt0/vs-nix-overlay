@@ -2,7 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  zig, # Requires nightly.
+  zig_0_12,
   optimizeLevel ? "ReleaseFast",
 }:
 stdenv.mkDerivation rec {
@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    zig
+    zig_0_12
   ];
 
   dontConfigure = true;

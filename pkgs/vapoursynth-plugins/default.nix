@@ -22,11 +22,11 @@ lib.makeScope newScope (self:
         removedirt = callPackage ./removedirt {};
         resize2 = callPackage ./resize2 {};
         webp = callPackage ./webp {};
+        zsmooth = callPackage ./zsmooth {};
 
         # Requires Zig nightly.
         # manipmv = callPackage ./manipmv {};
         # vszip = callPackage ./vszip {};
-        # zsmooth = callPackage ./zsmooth {};
       }
       // lib.optionalAttrs config.allowAliases {
         # Aliases.
