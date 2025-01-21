@@ -13,7 +13,7 @@
   "packageRules": [
     {
       "matchManagers": ["github-actions"],
-      "extends": [":semanticCommitTypeAll(ci)"]
+      "extends": [":semanticCommitScopeDisabled", ":semanticCommitTypeAll(ci)"]
     }
   ],
   "customManagers": [
@@ -27,7 +27,8 @@
 	      "extractVersion=(?<extractVersion>\\S+)"
       ],
       "matchStringsStrategy": "combination",
-      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}"
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      "extends": [":semanticCommitScopeDisabled", ":semanticCommitTypeAll({{parentDir}})"]
     }
   ]
 }
