@@ -26,6 +26,7 @@ lib.makeScope newScope (self:
         # Requires Zig nightly.
         # manipmv = callPackage ./manipmv {};
         # vszip = callPackage ./vszip {};
+        # zsmooth = callPackage ./zsmooth {};
       }
       // lib.optionalAttrs config.allowAliases {
         # Aliases.
