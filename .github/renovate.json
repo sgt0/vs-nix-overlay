@@ -14,6 +14,10 @@
     {
       "matchManagers": ["github-actions"],
       "extends": [":semanticCommitScopeDisabled", ":semanticCommitTypeAll(ci)"]
+    },
+    {
+      "matchFileNames": ["pkgs/**"],
+      "extends": [":semanticCommitScopeDisabled", ":semanticCommitTypeAll({{parentDir}})"]
     }
   ],
   "customManagers": [
@@ -27,8 +31,7 @@
 	      "extractVersion=(?<extractVersion>\\S+)"
       ],
       "matchStringsStrategy": "combination",
-      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
-      "extends": [":semanticCommitScopeDisabled", ":semanticCommitTypeAll({{parentDir}})"]
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}"
     }
   ]
 }
