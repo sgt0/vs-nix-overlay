@@ -7,6 +7,7 @@ lib.makeScope newScope (self:
     with self;
       {
         akarin = callPackage ./akarin {};
+        akarin_jet = callPackage ./akarin_jet {};
         bilateral = callPackage ./bilateral {};
         bs = callPackage ./bs {};
         colorbars = callPackage ./colorbars {};
