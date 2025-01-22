@@ -21,6 +21,7 @@ with pkgs; let
     vapoursynthPlugins.placebo
     vapoursynthPlugins.removedirt
     vapoursynthPlugins.resize2
+    vapoursynthPlugins.tivtc
     vapoursynthPlugins.webp
   ];
 in

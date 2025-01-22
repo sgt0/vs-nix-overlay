@@ -21,6 +21,7 @@ lib.makeScope newScope (self:
         placebo_sgt0 = callPackage ./placebo_sgt0 {};
         removedirt = callPackage ./removedirt {};
         resize2 = callPackage ./resize2 {};
+        tivtc = callPackage ./tivtc {};
         webp = callPackage ./webp {};
         zsmooth = callPackage ./zsmooth {};
 
