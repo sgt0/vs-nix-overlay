@@ -22,6 +22,7 @@ lib.makeScope newScope (self:
         removedirt = callPackage ./removedirt {};
         resize2 = callPackage ./resize2 {};
         tivtc = callPackage ./tivtc {};
+        vivtc = callPackage ./vivtc {};
         webp = callPackage ./webp {};
         zsmooth = callPackage ./zsmooth {};
 
