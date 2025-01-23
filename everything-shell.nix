@@ -3,6 +3,7 @@
   pkgs ?
     import <nixpkgs> {
       config.allowUnfree = true;
+      config.cudaSupport = true;
       overlays = [
         (import ./overlay.nix)
       ];
@@ -19,6 +20,7 @@ with pkgs; let
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.median
     vapoursynthPlugins.miscfilters
+    vapoursynthPlugins.nlm_cuda
     vapoursynthPlugins.placebo
     vapoursynthPlugins.removedirt
     vapoursynthPlugins.resize2
