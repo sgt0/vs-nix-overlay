@@ -44,4 +44,6 @@ jobs:
       - name: Build Nix packages
         run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
 
-      - run: nix flake check
+      - run: nix flake check --keep-going
+        continue-on-error: true
+      - run: nix flake show

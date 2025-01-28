@@ -15,11 +15,45 @@
     flake-utils,
     ...
   }: let
+    attrDerivations = set: path: (nixpkgs.lib.concatMapAttrs
+      (k: v:
+        if nixpkgs.lib.isDerivation v
+        then {${builtins.concatStringsSep "." (path ++ [k])} = v;}
+        else if builtins.isAttrs v
+        then attrDerivations v (path ++ [k])
+        else {})
+      set);
+
     systems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
     outputs = flake-utils.lib.eachSystem systems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      packages = nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) (import ./default.nix {inherit pkgs;});
+      packages =
+        nixpkgs.lib.concatMapAttrs
+        (k: v:
+          if nixpkgs.lib.isDerivation v
+          then {${k} = v;}
+          else if nixpkgs.lib.isFunction v
+          then {
+            ${k} = {
+              type = "derivation";
+              name = "dummy-function";
+              __functor = _: v;
+            };
+          }
+          else if builtins.isAttrs v
+          then
+            attrDerivations v [k]
+            // {
+              ${k} =
+                {
+                  type = "derivation";
+                  name = "dummy-attrset";
+                }
+                // v;
+            }
+          else v)
+        (import ./default.nix {inherit pkgs;});
 
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
@@ -35,7 +69,7 @@
     outputs
     // {
       overlays.default = final: prev: {
-        vs-nix-overlay = outputs.packages.${prev.system};
+        vspkgs = outputs.packages.${prev.system};
       };
     };
 }
