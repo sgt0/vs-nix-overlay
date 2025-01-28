@@ -10,6 +10,7 @@ lib.makeScope newScope (self:
         akarin_jet = callPackage ./akarin_jet {};
         bilateral = callPackage ./bilateral {};
         bs = callPackage ./bs {};
+        carefulsource = callPackage ./carefulsource {};
         colorbars = callPackage ./colorbars {};
         descale = callPackage ./descale {};
         ffms2 = callPackage ./ffms2 {};
