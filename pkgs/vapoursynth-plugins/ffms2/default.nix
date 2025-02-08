@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  autoreconfPhase = ''
+  preAutoreconf = ''
     mkdir src/config
   '';
 
