@@ -12,6 +12,7 @@
 with pkgs; let
   vapoursynth = pkgs.vapoursynth.withPlugins [
     vapoursynthPlugins.akarin
+    vapoursynthPlugins.ares
     vapoursynthPlugins.bilateral
     vapoursynthPlugins.bs
     vapoursynthPlugins.colorbars
