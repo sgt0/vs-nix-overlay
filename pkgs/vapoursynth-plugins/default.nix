@@ -14,6 +14,7 @@ lib.makeScope newScope (self:
         carefulsource = callPackage ./carefulsource {};
         colorbars = callPackage ./colorbars {};
         descale = callPackage ./descale {};
+        eedi2 = callPackage ./eedi2 {};
         ffms2 = callPackage ./ffms2 {};
         fftspectrum = callPackage ./fftspectrum {};
         fh = callPackage ./fh {};
