@@ -12,13 +12,13 @@
 stdenv.mkDerivation rec {
   pname = "placebo_sgt0";
   # renovate: datasource=github-releases depName=sgt0/vs-placebo
-  version = "3.2.3";
+  version = "3.2.4";
 
   src = fetchFromGitHub {
     owner = "sgt0";
     repo = "vs-placebo";
     rev = "refs/tags/v${version}";
-    hash = "sha256-V83o94+as9/sL7AiZsHgFRgrDicm/fWB+TsXvpqT1H4=";
+    hash = "sha256-KEJIpQ+R7xs3SzoQcDkeY5+NStbQL9au3PX6VyYDMQ0=";
     fetchSubmodules = true;
   };
 
