@@ -30,12 +30,12 @@ lib.makeScope newScope (self:
         resize2 = callPackage ./resize2 {};
         tivtc = callPackage ./tivtc {};
         vivtc = callPackage ./vivtc {};
+        vszip = callPackage ./vszip {};
         webp = callPackage ./webp {};
         zsmooth = callPackage ./zsmooth {};
 
         # Requires Zig nightly.
         # manipmv = callPackage ./manipmv {};
-        # vszip = callPackage ./vszip {};
       }
       // lib.optionalAttrs config.allowAliases {
         # Aliases.
