@@ -2,41 +2,36 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  zig, # Requires nightly.
+  callPackage,
+  zig,
   optimizeLevel ? "ReleaseFast",
 }: let
   zig_hook = zig.hook.overrideAttrs {
     zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
   };
 in
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     pname = "vszip";
-    # renovate: datasource=github-releases depName=dnjulek/vapoursynth-zip extractVersion=^R(?<version>.+)$
-    version = "5";
+    version = "5-unstable-2025-03-14";
 
     src = fetchFromGitHub {
       owner = "dnjulek";
       repo = "vapoursynth-zip";
-      rev = "refs/tags/R${version}";
-      hash = "sha256-1mmM8LYcOGQQZyi13SdEl1pTFjKLB9IQUllcH1Dje/k=";
+      rev = "381eee51e0a65ac5e33fbba47d0e53e2d6155f0a";
+      hash = "sha256-sCHiXGRmEvMWcCzWZMQmUl+REhpN5eLITNsB0OqOrsg=";
     };
 
     nativeBuildInputs = [
       zig_hook
     ];
 
-    dontConfigure = true;
-
-    preBuild = ''
-      # Necessary for zig cache to work.
-      export HOME=$TMPDIR
+    postPatch = ''
+      cp -a ${callPackage ./deps.nix {}}/. $ZIG_GLOBAL_CACHE_DIR/p
     '';
 
-    installPhase = ''
-      runHook preInstall
+    postInstall = ''
       mkdir -p $out/lib/vapoursynth
-      ln -s zig-out/lib/libvszip${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libvszip${stdenv.hostPlatform.extensions.sharedLibrary}
-      runHook postInstall
+      ln -s $out/lib/libvszip${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libvszip${stdenv.hostPlatform.extensions.sharedLibrary}
     '';
 
     meta = with lib; {
