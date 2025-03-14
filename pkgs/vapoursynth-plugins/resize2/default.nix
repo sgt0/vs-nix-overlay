@@ -11,13 +11,13 @@
 }:
 stdenv.mkDerivation {
   pname = "resize2";
-  version = "0.3.1-unstable-2025-01-19";
+  version = "0.3.1-unstable-2025-03-14";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-resize2";
-    rev = "f2c97f8cff2e2adf56c1e8756cc8b81104ac9685";
-    hash = "sha256-CMTeaYtTlquqAEZ4zCzMF3S0doBdKK3fwFgLpDFN1PE=";
+    rev = "7e600b5dddcbcd8d704e0135e1cc7a955d44b421";
+    hash = "sha256-7oSjiN8DbfwhOsNe2wg3i6JkZ91vpBzZlHKOy5U8IjE=";
     nativeBuildInputs = [
       cacert
       git
