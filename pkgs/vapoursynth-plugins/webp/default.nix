@@ -6,7 +6,7 @@
 rustPlatform.buildRustPackage rec {
   pname = "webp";
   # renovate: datasource=github-releases depName=sgt0/vapoursynth-webp
-  version = "1.0.6";
+  version = "1.0.7";
 
   src = fetchFromGitHub {
     owner = "sgt0";
