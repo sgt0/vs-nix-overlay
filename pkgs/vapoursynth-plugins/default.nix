@@ -28,6 +28,7 @@ lib.makeScope newScope (self:
         placebo_sgt0 = callPackage ./placebo_sgt0 {};
         removedirt = callPackage ./removedirt {};
         resize2 = callPackage ./resize2 {};
+        retinex = callPackage ./retinex {};
         tivtc = callPackage ./tivtc {};
         vivtc = callPackage ./vivtc {};
         vszip = callPackage ./vszip {};
