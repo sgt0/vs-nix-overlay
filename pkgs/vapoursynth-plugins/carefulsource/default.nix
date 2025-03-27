@@ -6,12 +6,13 @@
   ninja,
   pkg-config,
   lcms,
+  libjpeg,
   libpng,
   vapoursynth,
 }:
 stdenv.mkDerivation {
   pname = "carefulsource";
-  version = "4-unstable-2025-01-27";
+  version = "4-unstable-2025-03-27";
 
   src = fetchFromGitHub {
     owner = "wwww-wwww";
@@ -28,6 +29,7 @@ stdenv.mkDerivation {
 
   buildInputs = [
     lcms
+    libjpeg
     libpng
     vapoursynth
   ];
