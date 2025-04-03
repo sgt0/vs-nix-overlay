@@ -7,15 +7,15 @@
   pkg-config,
   vapoursynth,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "descale";
-  version = "10-unstable-2025-01-19";
+  version = "11";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-descale";
-    rev = "f84c408a414862e84543af9f589bed5b5e10ae3f";
-    hash = "sha256-+VTBUIRupWzJnjuwLxryYLaC0Q3mUPLAy70l03lT8/o=";
+    rev = "refs/tags/r${version}";
+    hash = "sha256-qCFMKO0NraxTRF+BQY3N2Vf6kakgLtNEZ8mU5pTTynM=";
   };
 
   nativeBuildInputs = [
