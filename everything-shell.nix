@@ -26,6 +26,7 @@ with pkgs; let
     vapoursynthPlugins.removedirt
     vapoursynthPlugins.resize2
     vapoursynthPlugins.retinex
+    vapoursynthPlugins.rgvs
     vapoursynthPlugins.tivtc
     vapoursynthPlugins.vivtc
     vapoursynthPlugins.webp
