@@ -29,6 +29,7 @@ lib.makeScope newScope (self:
         removedirt = callPackage ./removedirt {};
         resize2 = callPackage ./resize2 {};
         retinex = callPackage ./retinex {};
+        rgvs = callPackage ./rgvs {};
         tivtc = callPackage ./tivtc {};
         vivtc = callPackage ./vivtc {};
         vszip = callPackage ./vszip {};
