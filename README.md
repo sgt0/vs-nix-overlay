@@ -36,7 +36,7 @@
           {
             nativeBuildInputs = with pkgs; [
               # 3. Define a VapourSynth environment with plugins.
-              python312Packages.vapoursynth
+              python312
               (vapoursynth.withPlugins [
                 vspkgs.vapoursynthPlugins.bilateral
                 vspkgs.vapoursynthPlugins.resize2
