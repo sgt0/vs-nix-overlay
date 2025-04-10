@@ -4,10 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
+    flake-compat.url = "github:edolstra/flake-compat";
   };
 
   outputs = {
@@ -64,6 +61,68 @@
       };
 
       formatter = pkgs.alejandra;
+
+      checks = {
+        vs67 =
+          pkgs.runCommandLocal "vs67-check"
+          {
+            nativeBuildInputs = with pkgs; [
+              python312
+              (outputs.packages.${system}.vapoursynth_67.withPlugins [
+                outputs.packages.${system}.vapoursynthPlugins.akarin_jet
+              ])
+            ];
+          }
+          ''
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.akarin)"
+            touch $out
+          '';
+
+        vs68 =
+          pkgs.runCommandLocal "vs68-check"
+          {
+            nativeBuildInputs = with pkgs; [
+              python312
+              (outputs.packages.${system}.vapoursynth_68.withPlugins [
+                outputs.packages.${system}.vapoursynthPlugins.resize2
+              ])
+            ];
+          }
+          ''
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.resize2)"
+            touch $out
+          '';
+
+        vs69 =
+          pkgs.runCommandLocal "vs69-check"
+          {
+            nativeBuildInputs = with pkgs; [
+              python312
+              (outputs.packages.${system}.vapoursynth_69.withPlugins [
+                outputs.packages.${system}.vapoursynthPlugins.vszip
+              ])
+            ];
+          }
+          ''
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.vszip)"
+            touch $out
+          '';
+
+        vs70 =
+          pkgs.runCommandLocal "vs70-check"
+          {
+            nativeBuildInputs = with pkgs; [
+              python312
+              (outputs.packages.${system}.vapoursynth_70.withPlugins [
+                outputs.packages.${system}.vapoursynthPlugins.bs
+              ])
+            ];
+          }
+          ''
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.bs)"
+            touch $out
+          '';
+      };
     });
   in
     outputs
