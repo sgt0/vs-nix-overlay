@@ -17,6 +17,7 @@ with pkgs; let
     vapoursynthPlugins.bs
     vapoursynthPlugins.colorbars
     vapoursynthPlugins.descale
+    vapoursynthPlugins.dfttest
     vapoursynthPlugins.ffms2
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.median
