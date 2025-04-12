@@ -35,6 +35,9 @@ stdenv.mkDerivation rec {
   '';
 
   mesonBuildType = "release";
+  mesonFlags = [
+    "-Db_lto=false"
+  ];
 
   meta = with lib; {
     description = "fpng for VapourSynth";
