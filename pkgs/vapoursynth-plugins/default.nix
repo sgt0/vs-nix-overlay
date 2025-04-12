@@ -24,6 +24,7 @@ lib.makeScope newScope (self:
         fpng = callPackage ./fpng {};
         median = callPackage ./median {};
         miscfilters = callPackage ./miscfilters {};
+        mv = callPackage ./mv {};
         neo_tmedian = callPackage ./neo_tmedian {};
         nlm_cuda = callPackage ./nlm_cuda {};
         placebo = callPackage ./placebo {};
