@@ -11,6 +11,7 @@ lib.makeScope newScope (self:
         ares = callPackage ./ares {};
         bilateral = callPackage ./bilateral {};
         bs = callPackage ./bs {};
+        cambi = callPackage ./cambi {};
         carefulsource = callPackage ./carefulsource {};
         colorbars = callPackage ./colorbars {};
         descale = callPackage ./descale {};
