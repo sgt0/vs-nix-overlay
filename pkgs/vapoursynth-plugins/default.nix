@@ -31,6 +31,7 @@ lib.makeScope newScope (self:
         retinex = callPackage ./retinex {};
         rgvs = callPackage ./rgvs {};
         tivtc = callPackage ./tivtc {};
+        tmedian = callPackage ./tmedian {};
         vivtc = callPackage ./vivtc {};
         vszip = callPackage ./vszip {};
         webp = callPackage ./webp {};

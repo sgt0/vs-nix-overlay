@@ -28,6 +28,7 @@ with pkgs; let
     vapoursynthPlugins.retinex
     vapoursynthPlugins.rgvs
     vapoursynthPlugins.tivtc
+    vapoursynthPlugins.tmedian
     vapoursynthPlugins.vivtc
     vapoursynthPlugins.webp
   ];
