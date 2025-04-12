@@ -21,6 +21,7 @@ with pkgs; let
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.median
     vapoursynthPlugins.miscfilters
+    vapoursynthPlugins.neo_tmedian
     vapoursynthPlugins.nlm_cuda
     vapoursynthPlugins.placebo
     vapoursynthPlugins.removedirt
