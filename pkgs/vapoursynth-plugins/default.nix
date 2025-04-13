@@ -37,6 +37,7 @@ lib.makeScope newScope (self:
         tivtc = callPackage ./tivtc {};
         tmedian = callPackage ./tmedian {};
         vivtc = callPackage ./vivtc {};
+        vsnlq = callPackage ./vsnlq {};
         vszip = callPackage ./vszip {};
         webp = callPackage ./webp {};
         zsmooth = callPackage ./zsmooth {};
