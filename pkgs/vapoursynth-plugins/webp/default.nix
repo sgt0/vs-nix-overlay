@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
   rustPlatform,
   fetchFromGitHub,
 }:
@@ -20,7 +21,7 @@ rustPlatform.buildRustPackage rec {
 
   postInstall = ''
     mkdir $out/lib/vapoursynth
-    mv $out/lib/libwebp.so $out/lib/vapoursynth/libwebp.so
+    ln -s $out/lib/libwebp${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libwebp${stdenv.hostPlatform.extensions.sharedLibrary}
   '';
 
   meta = with lib; {
