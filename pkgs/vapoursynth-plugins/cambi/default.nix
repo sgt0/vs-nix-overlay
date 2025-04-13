@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
   rustPlatform,
   fetchFromGitHub,
 }:
@@ -20,7 +21,7 @@ rustPlatform.buildRustPackage rec {
 
   postInstall = ''
     mkdir $out/lib/vapoursynth
-    mv $out/lib/libcambi.so $out/lib/vapoursynth/libcambi.so
+    ln -s $out/lib/libcambi${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libcambi${stdenv.hostPlatform.extensions.sharedLibrary}
   '';
 
   meta = with lib; {
