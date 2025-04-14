@@ -44,6 +44,6 @@ stdenv.mkDerivation rec {
     description = "Neo Temporal Median is a temporal denoising filter. It replaces every pixel with the median of its temporal neighbourhood.";
     homepage = "https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian";
     license = licenses.mit;
-    platforms = platforms.all;
+    platforms = platforms.x86_64;
   };
 }
