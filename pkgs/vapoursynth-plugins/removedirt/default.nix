@@ -35,5 +35,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/pinterf/RemoveDirt";
     license = licenses.gpl2;
     platforms = platforms.all;
+    broken = stdenv.cc.isClang; # common.cpp:26:19: error: format string is not a string literal (potentially insecure) [-Werror,-Wformat-security]
   };
 }
