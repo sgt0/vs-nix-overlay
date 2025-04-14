@@ -65,5 +65,6 @@ stdenv.mkDerivation {
     homepage = "https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2";
     license = licenses.lgpl21;
     platforms = platforms.all;
+    broken = stdenv.cc.isClang; # clang++: error: unsupported argument 'armv7-a' to option '-march='
   };
 }
