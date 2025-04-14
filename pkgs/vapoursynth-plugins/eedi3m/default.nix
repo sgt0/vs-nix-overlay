@@ -45,6 +45,6 @@ stdenv.mkDerivation {
     description = "An intra-field only deinterlacer";
     homepage = "https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3";
     license = licenses.gpl2;
-    platforms = platforms.all;
+    platforms = platforms.x86_64;
   };
 }
