@@ -44,5 +44,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/Mikewando/vsfpng";
     license = licenses.lgpl21;
     platforms = platforms.all;
+    broken = stdenv.cc.isClang; # ../src/p2p_api.cpp:56:2: warning: missing field 'is_nv' initializer [-Wmissing-field-initializers]
   };
 }
