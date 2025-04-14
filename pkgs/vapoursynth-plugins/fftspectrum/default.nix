@@ -47,9 +47,6 @@ stdenv.mkDerivation {
     description = "A VapourSynth filter that displays the FFT frequency spectrum of a given clip.";
     homepage = "https://github.com/Beatrice-Raws/FFTSpectrum";
     license = licenses.gpl2;
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
+    platforms = platforms.x86_64;
   };
 }
