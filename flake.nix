@@ -4,10 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
+    flake-compat.url = "github:edolstra/flake-compat";
   };
 
   outputs = {
@@ -53,7 +50,9 @@
                 // v;
             }
           else v)
-        (import ./default.nix {inherit pkgs;});
+        {
+          vapoursynthPlugins = pkgs.recurseIntoAttrs (pkgs.callPackage ./pkgs/vapoursynth-plugins {});
+        };
 
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
