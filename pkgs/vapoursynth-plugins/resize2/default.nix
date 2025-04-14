@@ -34,7 +34,12 @@ stdenv.mkDerivation {
     '';
   };
 
-  NIX_CFLAGS_COMPILE = "-Wno-error=format-security -march=x86-64-v4";
+  env = {
+    NIX_CFLAGS_COMPILE = toString (
+      []
+      ++ lib.optionals stdenv.cc.isGNU ["-Wno-error=format-security"]
+    );
+  };
 
   nativeBuildInputs = [
     pkg-config
