@@ -37,6 +37,6 @@ stdenv.mkDerivation {
     description = "Field matching and decimation";
     homepage = "https://github.com/dubhater/vapoursynth-tivtc";
     license = licenses.gpl2Plus;
-    platforms = platforms.all;
+    platforms = platforms.x86;
   };
 }
