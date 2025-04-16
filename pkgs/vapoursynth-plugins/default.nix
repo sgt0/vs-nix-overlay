@@ -20,6 +20,7 @@ lib.makeScope newScope (self:
         eedi3m = callPackage ./eedi3m {};
         ffms2 = callPackage ./ffms2 {};
         fftspectrum = callPackage ./fftspectrum {};
+        fftspectrum_rs = callPackage ./fftspectrum_rs {};
         fh = callPackage ./fh {};
         fmtc = callPackage ./fmtc {};
         fpng = callPackage ./fpng {};
