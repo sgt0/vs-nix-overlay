@@ -37,6 +37,9 @@
       "70" = {
         hash = "sha256-jkRjFKHNTekXluSKQ33QqsGRy7LKnkmG97U5WIjI6EM=";
       };
+      "71" = {
+        hash = "sha256-gFfkZaYIpQnDckYk6a8hGJCjBQxjjMIgzPZ4k2sVab4=";
+      };
     }
     // vapoursynthVersions;
 
