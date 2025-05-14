@@ -84,12 +84,12 @@
             nativeBuildInputs = with pkgs; [
               python312
               (outputs.packages.${system}.vapoursynth_68.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.resize2
+                outputs.packages.${system}.vapoursynthPlugins.bs
               ])
             ];
           }
           ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.resize2)"
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.bs)"
             touch $out
           '';
 
@@ -99,12 +99,12 @@
             nativeBuildInputs = with pkgs; [
               python312
               (outputs.packages.${system}.vapoursynth_69.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.vszip
+                outputs.packages.${system}.vapoursynthPlugins.cambi
               ])
             ];
           }
           ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.vszip)"
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.cambi)"
             touch $out
           '';
 
@@ -114,12 +114,27 @@
             nativeBuildInputs = with pkgs; [
               python312
               (outputs.packages.${system}.vapoursynth_70.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.bs
+                outputs.packages.${system}.vapoursynthPlugins.descale
               ])
             ];
           }
           ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.bs)"
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.descale)"
+            touch $out
+          '';
+
+        vs71 =
+          pkgs.runCommandLocal "vs71-check"
+          {
+            nativeBuildInputs = with pkgs; [
+              python312
+              (outputs.packages.${system}.vapoursynth_71.withPlugins [
+                outputs.packages.${system}.vapoursynthPlugins.ffms2
+              ])
+            ];
+          }
+          ''
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.ffms2)"
             touch $out
           '';
       };
