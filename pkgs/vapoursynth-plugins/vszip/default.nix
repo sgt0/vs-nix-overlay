@@ -10,15 +10,16 @@
     zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
   };
 in
-  stdenv.mkDerivation {
+  stdenv.mkDerivation rec {
     pname = "vszip";
-    version = "5-unstable-2025-03-14";
+    # renovate: datasource=github-releases depName=dnjulek/vapoursynth-zip extractVersion=^R(?<version>.+)$
+    version = "6";
 
     src = fetchFromGitHub {
       owner = "dnjulek";
       repo = "vapoursynth-zip";
-      rev = "381eee51e0a65ac5e33fbba47d0e53e2d6155f0a";
-      hash = "sha256-sCHiXGRmEvMWcCzWZMQmUl+REhpN5eLITNsB0OqOrsg=";
+      rev = "refs/tags/R${version}";
+      hash = "sha256-qzaCGTSm0nvq3fU+lWSeOuWKIr7EkXkaqvYH7rLJz64=";
     };
 
     nativeBuildInputs = [
