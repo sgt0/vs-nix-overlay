@@ -32,7 +32,8 @@ jobs:
       - name: Set up Nix cache
         uses: cachix/cachix-action@v16
         with:
-          name: sgt0
+          name: vs-nix-overlay
+          extraPullNames: sgt0
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Check evaluation

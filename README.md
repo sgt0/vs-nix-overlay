@@ -92,6 +92,27 @@ last few VapourSynth versions:
 }
 ```
 
+## Remote binary cache
+
+This repository's CI pushes to a [remote binary cache](https://app.cachix.org/cache/vs-nix-overlay),
+which can be used to speed up builds.
+
+If the Cachix client is already [installed](https://docs.cachix.org/installation#installation),
+then run:
+
+```
+cachix use vs-nix-overlay
+```
+
+Or, in a GitHub Actions workflow, use:
+
+```yaml
+- name: Set up Nix cache
+  uses: cachix/cachix-action@v16
+  with:
+    name: vs-nix-overlay
+```
+
 ## Prior art
 
 - [nix-community/vs-overlay](https://github.com/nix-community/vs-overlay)
