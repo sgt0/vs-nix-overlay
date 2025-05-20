@@ -1,11 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
+    "config:best-practices",
     ":disableDependencyDashboard",
     ":disableRateLimiting",
     ":semanticCommits"
   ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "nix": {
     "enabled": true
   },
@@ -17,7 +20,11 @@
     },
     {
       "matchFileNames": ["pkgs/**"],
-      "extends": [":semanticCommitScopeDisabled", ":semanticCommitTypeAll({{parentDir}})"]
+      "commitMessagePrefix": "{{{parentDir}}}:",
+      "commitMessageAction": null,
+      "commitMessageTopic": "{{{displayFrom}}}",
+      "commitMessageExtra": "-> {{{displayTo}}}",
+      "commitMessageSuffix": null
     }
   ],
   "customManagers": [
@@ -25,10 +32,10 @@
       "customType": "regex",
       "fileMatch": ["^pkgs/.+/default.nix$"],
       "matchStrings": [
-	      "version\\s*=\\s*\"(?<currentValue>.*?)\";",
-	      "datasource=(?<datasource>\\S+)",
-	      "depName=(?<depName>\\S+)",
-	      "extractVersion=(?<extractVersion>\\S+)"
+        "version\\s*=\\s*\"(?<currentValue>.*?)\";",
+        "datasource=(?<datasource>\\S+)",
+        "depName=(?<depName>\\S+)",
+        "extractVersion=(?<extractVersion>\\S+)"
       ],
       "matchStringsStrategy": "combination",
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}"
