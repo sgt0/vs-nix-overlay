@@ -3,23 +3,23 @@
   stdenv,
   fetchFromGitHub,
   callPackage,
-  zig_0_12,
+  zig_0_14,
   optimizeLevel ? "ReleaseFast",
 }: let
-  zig_hook = zig_0_12.hook.overrideAttrs {
+  zig_hook = zig_0_14.hook.overrideAttrs {
     zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
   };
 in
   stdenv.mkDerivation rec {
     pname = "zsmooth";
     # renovate: datasource=github-releases depName=adworacz/zsmooth
-    version = "0.8";
+    version = "0.9";
 
     src = fetchFromGitHub {
       owner = "adworacz";
       repo = "zsmooth";
       rev = "refs/tags/${version}";
-      hash = "sha256-oEjd/I9MkVTXnLKlOiFAwCgou2yts+BviIXpoiWPYVQ=";
+      hash = "sha256-I4DnkM7E3Wmlgj85aE8UzfE/xmbzoWW9pp8bUYYx7zo=";
     };
 
     nativeBuildInputs = [
@@ -27,7 +27,7 @@ in
     ];
 
     postPatch = ''
-      cp -a ${callPackage ./deps.nix {}}/. $ZIG_GLOBAL_CACHE_DIR/p
+      ln -s ${callPackage ./deps.nix {zig = zig_0_14;}} $ZIG_GLOBAL_CACHE_DIR/p
     '';
 
     postInstall = ''
