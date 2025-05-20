@@ -15,11 +15,18 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "matchManagers": ["github-actions"],
-      "extends": [":semanticCommitScopeDisabled", ":semanticCommitTypeAll(ci)"]
+      "matchManagers": [
+        "github-actions"
+      ],
+      "extends": [
+        ":semanticCommitScopeDisabled",
+        ":semanticCommitTypeAll(ci)"
+      ]
     },
     {
-      "matchFileNames": ["pkgs/**"],
+      "matchFileNames": [
+        "pkgs/**"
+      ],
       "commitMessagePrefix": "{{{parentDir}}}:",
       "commitMessageAction": null,
       "commitMessageTopic": "{{{displayFrom}}}",
@@ -30,7 +37,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^pkgs/.+/default.nix$"],
+      "managerFilePatterns": [
+        "/^pkgs/.+/default.nix$/"
+      ],
       "matchStrings": [
         "version\\s*=\\s*\"(?<currentValue>.*?)\";",
         "datasource=(?<datasource>\\S+)",
