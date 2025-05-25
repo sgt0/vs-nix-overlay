@@ -40,7 +40,7 @@ in
     ];
 
     meta = with lib; {
-      description = " DePan & DePanEstimate";
+      description = "DePan & DePanEstimate";
       homepage = "https://github.com/Vapoursynth-Plugins-Gitify/DePan";
       license = licenses.gpl2;
       platforms = platforms.all;
