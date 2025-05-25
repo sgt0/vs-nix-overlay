@@ -14,6 +14,7 @@ lib.makeScope newScope (self:
         cambi = callPackage ./cambi {};
         carefulsource = callPackage ./carefulsource {};
         colorbars = callPackage ./colorbars {};
+        depan = callPackage ./depan {};
         descale = callPackage ./descale {};
         dfttest = callPackage ./dfttest {};
         eedi2 = callPackage ./eedi2 {};
