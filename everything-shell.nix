@@ -16,6 +16,7 @@ with pkgs; let
     vapoursynthPlugins.bilateral
     vapoursynthPlugins.bs
     vapoursynthPlugins.colorbars
+    vapoursynthPlugins.depan
     vapoursynthPlugins.descale
     vapoursynthPlugins.dfttest
     vapoursynthPlugins.ffms2
