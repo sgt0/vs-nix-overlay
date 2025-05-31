@@ -31,6 +31,7 @@ lib.makeScope newScope (self:
         neo_f3kdb = callPackage ./neo_f3kdb {};
         neo_tmedian = callPackage ./neo_tmedian {};
         nlm_cuda = callPackage ./nlm_cuda {};
+        noise = callPackage ./noise {};
         placebo = callPackage ./placebo {};
         placebo_sgt0 = callPackage ./placebo_sgt0 {};
         removedirt = callPackage ./removedirt {};
