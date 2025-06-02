@@ -44,6 +44,7 @@ lib.makeScope newScope (self:
         vsnlq = callPackage ./vsnlq {};
         vszip = callPackage ./vszip {};
         webp = callPackage ./webp {};
+        zscene = callPackage ./zscene {};
         zsmooth = callPackage ./zsmooth {};
 
         # Requires Zig nightly.
