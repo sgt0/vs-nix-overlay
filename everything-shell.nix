@@ -27,6 +27,7 @@ with pkgs; let
     vapoursynthPlugins.neo_tmedian
     vapoursynthPlugins.nlm_cuda
     vapoursynthPlugins.placebo
+    vapoursynthPlugins.raws
     vapoursynthPlugins.removedirt
     vapoursynthPlugins.resize2
     vapoursynthPlugins.retinex
