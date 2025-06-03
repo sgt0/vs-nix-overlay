@@ -34,6 +34,7 @@ lib.makeScope newScope (self:
         noise = callPackage ./noise {};
         placebo = callPackage ./placebo {};
         placebo_sgt0 = callPackage ./placebo_sgt0 {};
+        raws = callPackage ./raws {};
         removedirt = callPackage ./removedirt {};
         resize2 = callPackage ./resize2 {};
         retinex = callPackage ./retinex {};
