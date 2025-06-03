@@ -39,6 +39,7 @@ lib.makeScope newScope (self:
         resize2 = callPackage ./resize2 {};
         retinex = callPackage ./retinex {};
         rgvs = callPackage ./rgvs {};
+        sneedif = callPackage ./sneedif {};
         tivtc = callPackage ./tivtc {};
         tmedian = callPackage ./tmedian {};
         vivtc = callPackage ./vivtc {};
