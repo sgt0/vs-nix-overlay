@@ -17,6 +17,7 @@ lib.makeScope newScope (self:
         depan = callPackage ./depan {};
         descale = callPackage ./descale {};
         dfttest = callPackage ./dfttest {};
+        dgm = callPackage ./dgm {};
         eedi2 = callPackage ./eedi2 {};
         eedi3m = callPackage ./eedi3m {};
         ffms2 = callPackage ./ffms2 {};
