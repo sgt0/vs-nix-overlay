@@ -13,13 +13,13 @@ in
   stdenv.mkDerivation rec {
     pname = "zsmooth";
     # renovate: datasource=github-releases depName=adworacz/zsmooth
-    version = "0.9";
+    version = "0.10";
 
     src = fetchFromGitHub {
       owner = "adworacz";
       repo = "zsmooth";
       rev = "refs/tags/${version}";
-      hash = "sha256-I4DnkM7E3Wmlgj85aE8UzfE/xmbzoWW9pp8bUYYx7zo=";
+      hash = "sha256-y9kKjq2qRbONWcKKoa7LFULJel4OTeTTVRE9rw8SRJs=";
     };
 
     nativeBuildInputs = [
