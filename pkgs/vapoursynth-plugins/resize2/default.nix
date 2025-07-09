@@ -9,15 +9,16 @@
   pkg-config,
   vapoursynth,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "resize2";
-  version = "0.3.2-unstable-2025-05-29";
+  # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-resize2
+  version = "0.3.3";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-resize2";
-    rev = "f665219bd1be491eac04cef3f55c950712c05e1b";
-    hash = "sha256-KcPmZmTtbzT//7XPFkhl/arQQy9NVFxvRZO1mbnuDJ8=";
+    rev = "refs/tags/${version}";
+    hash = "sha256-mmFr65dpR7W7g3rBP6UikSSYpS+NIhwYrBj31xP01HI=";
     nativeBuildInputs = [
       cacert
       git
