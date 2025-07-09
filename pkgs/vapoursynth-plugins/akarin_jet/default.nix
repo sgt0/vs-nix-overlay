@@ -9,15 +9,16 @@
   libxml2,
   vapoursynth,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "akarin_jet";
-  version = "0.96-unstable-2025-01-22";
+  # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/akarin-vapoursynth-plugin
+  version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "akarin-vapoursynth-plugin";
-    rev = "62a5bae73a10ad344e6c02a228c03c5525854678";
-    hash = "sha256-4XYNE3IhacTOveOPR722b509c17ho4tfbOYK7o7Ku1M=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-FfoXhUuhox4miidZ5o5qKJC1qYYk96VbLxyd7/MFWa4=";
   };
 
   nativeBuildInputs = [

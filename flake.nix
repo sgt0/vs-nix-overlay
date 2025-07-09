@@ -67,7 +67,7 @@
           pkgs.runCommandLocal "vs67-check"
           {
             nativeBuildInputs = with pkgs; [
-              python312
+              python3
               (outputs.packages.${system}.vapoursynth_67.withPlugins [
                 outputs.packages.${system}.vapoursynthPlugins.akarin_jet
               ])
@@ -82,7 +82,7 @@
           pkgs.runCommandLocal "vs68-check"
           {
             nativeBuildInputs = with pkgs; [
-              python312
+              python3
               (outputs.packages.${system}.vapoursynth_68.withPlugins [
                 outputs.packages.${system}.vapoursynthPlugins.bs
               ])
@@ -97,7 +97,7 @@
           pkgs.runCommandLocal "vs69-check"
           {
             nativeBuildInputs = with pkgs; [
-              python312
+              python3
               (outputs.packages.${system}.vapoursynth_69.withPlugins [
                 outputs.packages.${system}.vapoursynthPlugins.cambi
               ])
@@ -112,7 +112,7 @@
           pkgs.runCommandLocal "vs70-check"
           {
             nativeBuildInputs = with pkgs; [
-              python312
+              python3
               (outputs.packages.${system}.vapoursynth_70.withPlugins [
                 outputs.packages.${system}.vapoursynthPlugins.descale
               ])
@@ -127,7 +127,7 @@
           pkgs.runCommandLocal "vs71-check"
           {
             nativeBuildInputs = with pkgs; [
-              python312
+              python3
               (outputs.packages.${system}.vapoursynth_71.withPlugins [
                 outputs.packages.${system}.vapoursynthPlugins.ffms2
               ])
