@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "bs";
   # renovate: datasource=github-releases depName=vapoursynth/bestsource extractVersion=^R(?<version>.+)$
-  version = "12";
+  version = "13";
 
   outputs = [
     "out"
