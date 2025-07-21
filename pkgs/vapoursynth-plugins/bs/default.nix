@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "bs";
   # renovate: datasource=github-releases depName=vapoursynth/bestsource extractVersion=^R(?<version>.+)$
-  version = "12";
+  version = "13";
 
   outputs = [
     "out"
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     owner = "vapoursynth";
     repo = "bestsource";
     rev = "refs/tags/R${version}";
-    hash = "sha256-cLEPu1PDsATCHohj2/RDob0DO8pRGQ7PT6J2Xmar+VQ=";
+    hash = "sha256-c+FMFWICDS8Plj6GE2vvhWPmf56Vk10j41HUK1q20/U=";
     fetchSubmodules = true;
   };
 
