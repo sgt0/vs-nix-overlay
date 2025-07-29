@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "placebo_sgt0";
   # renovate: datasource=github-releases depName=sgt0/vs-placebo
-  version = "3.2.4";
+  version = "3.3.0";
 
   src = fetchFromGitHub {
     owner = "sgt0";
