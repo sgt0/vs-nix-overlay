@@ -13,7 +13,7 @@ in
   stdenv.mkDerivation rec {
     pname = "vszip";
     # renovate: datasource=github-releases depName=dnjulek/vapoursynth-zip extractVersion=^R(?<version>.+)$
-    version = "7";
+    version = "8";
 
     src = fetchFromGitHub {
       owner = "dnjulek";
