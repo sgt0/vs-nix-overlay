@@ -13,13 +13,13 @@ in
   stdenv.mkDerivation rec {
     pname = "vszip";
     # renovate: datasource=github-releases depName=dnjulek/vapoursynth-zip extractVersion=^R(?<version>.+)$
-    version = "7";
+    version = "9";
 
     src = fetchFromGitHub {
       owner = "dnjulek";
       repo = "vapoursynth-zip";
       rev = "refs/tags/R${version}";
-      hash = "sha256-/bHD+t5upQ+So1k+5/IbNTfeugMqcnlDlaH/H9nXgR8=";
+      hash = "sha256-aru8HlfL8Aq/kM61omB+PdSTFin75mE9LHeqIthSXT8=";
     };
 
     nativeBuildInputs = [
