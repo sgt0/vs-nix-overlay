@@ -9,13 +9,13 @@
 stdenv.mkDerivation rec {
   pname = "ares";
   # renovate: datasource=github-tags depName=ropagr/VapourSynth-AudioResample
-  version = "0.2.0";
+  version = "0.3.0";
 
   src = fetchFromGitHub {
     owner = "ropagr";
     repo = "VapourSynth-AudioResample";
     rev = "refs/tags/v${version}";
-    hash = "sha256-89lNPBaWg3ubbMdKnGTj0pwSrpTH+0o/7N8fRD/hbZw=";
+    hash = "sha256-Och/R5+iu+A6PSS7rALLCy3oZxEggWWBhWshqPNCdg8=";
   };
 
   patches = [
