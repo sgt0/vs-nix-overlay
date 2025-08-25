@@ -5,7 +5,7 @@
   meson,
   ninja,
   pkg-config,
-  boost183,
+  boost,
   opencl-headers,
   ocl-icd,
   vapoursynth,
@@ -28,7 +28,7 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [
-    boost183
+    boost
     opencl-headers
     ocl-icd
     vapoursynth

@@ -19,6 +19,7 @@ with pkgs; let
     vapoursynthPlugins.depan
     vapoursynthPlugins.descale
     vapoursynthPlugins.dfttest
+    vapoursynthPlugins.eedi3m
     vapoursynthPlugins.ffms2
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.fftspectrum_rs
