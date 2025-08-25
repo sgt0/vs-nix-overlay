@@ -3,19 +3,19 @@
   stdenv,
   fetchFromGitHub,
   cmake,
-  libsamplerate,
+  soxr,
   vapoursynth,
 }:
 stdenv.mkDerivation rec {
   pname = "ares";
   # renovate: datasource=github-tags depName=ropagr/VapourSynth-AudioResample
-  version = "0.3.0";
+  version = "0.4.0";
 
   src = fetchFromGitHub {
     owner = "ropagr";
     repo = "VapourSynth-AudioResample";
     rev = "refs/tags/v${version}";
-    hash = "sha256-Och/R5+iu+A6PSS7rALLCy3oZxEggWWBhWshqPNCdg8=";
+    hash = "sha256-oUvxzW9okrX7xt2eo3lLb/OmKnwWRRf7fsdxqPvM5Mc=";
   };
 
   patches = [
@@ -27,9 +27,13 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    libsamplerate
+    soxr
     vapoursynth
   ];
+
+  postPatch = ''
+    substituteInPlace CMakeLists.txt --replace-fail "-static" ""
+  '';
 
   installPhase = ''
     runHook preInstall
