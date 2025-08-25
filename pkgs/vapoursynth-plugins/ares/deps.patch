@@ -1,20 +1,37 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a9098f1..9c857c8 100644
+index f5e50fe..98eed9e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -7,14 +7,7 @@ project(
-     LANGUAGES CXX
- )
- 
--include(FetchContent)
--FetchContent_Declare(
--    libsamplerate
--    GIT_REPOSITORY https://github.com/libsndfile/libsamplerate.git
--    GIT_PROGRESS ON
--)
+@@ -62,31 +62,11 @@ if (WITH_OPENMP)
+ endif()
+
+
+-# Prepare soxr source directory
 -
--FetchContent_MakeAvailable(libsamplerate)
-+find_package(libsamplerate)
- 
+-if (SOXR_SOURCE_DIR)
+-    if (NOT EXISTS "${SOXR_SOURCE_DIR}/CMakeLists.txt")
+-        message(FATAL_ERROR "Error: Specified soxr source directory does not contain CMakeLists.txt")
+-    endif()
+-
+-    message(STATUS "Using custom soxr from ${SOXR_SOURCE_DIR}")
+-    set(SOXR_BINARY_DIR "${CMAKE_BINARY_DIR}/soxr-build")
+-else()
+-    fetch_FromGit("${SOXR_GIT}" "${SOXR_COMMIT}" SOXR_SOURCE_DIR SOXR_BINARY_DIR)
+-endif()
+-
+-
+-# Add soxr source directory to the project
+-
+ # disable soxr tests and libsamplerate bindings
+ set(BUILD_TESTS OFF CACHE INTERNAL "Disable tests")
+ set(WITH_LSR_BINDINGS OFF CACHE INTERNAL "Disable LSR bindings")
+
+-if (${SOXR_USE_PATCHES})
+-    soxr_AddPatched("${SOXR_SOURCE_DIR}" "${SOXR_BINARY_DIR}")
+-else()
+-    add_subdirectory("${SOXR_SOURCE_DIR}" "${SOXR_BINARY_DIR}")
+-endif()
++find_package(soxr)
+
+
  add_library(AudioResample SHARED
-     ${CMAKE_SOURCE_DIR}/src/plugin.cpp
