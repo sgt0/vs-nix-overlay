@@ -15,6 +15,7 @@ with pkgs; let
     vapoursynthPlugins.ares
     vapoursynthPlugins.bilateral
     vapoursynthPlugins.bs
+    vapoursynthPlugins.cambi
     vapoursynthPlugins.colorbars
     vapoursynthPlugins.depan
     vapoursynthPlugins.descale
