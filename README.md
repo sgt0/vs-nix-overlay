@@ -51,7 +51,7 @@ In a `flake.nix`:
           {
             nativeBuildInputs = with pkgs; [
               # 3. Define a VapourSynth environment with plugins.
-              python312
+              python3
               (vapoursynth.withPlugins [
                 vspkgs.vapoursynthPlugins.bilateral
                 vspkgs.vapoursynthPlugins.resize2
@@ -80,7 +80,7 @@ last few VapourSynth versions:
 
   nativeBuildInputs = with pkgs; [
     # Define a VapourSynth R67 environment with plugins.
-    python312
+    python3
     (vspkgs.vapoursynth_67.withPlugins [
       vspkgs.vapoursynthPlugins.akarin
       vspkgs.vapoursynthPlugins.vszip
