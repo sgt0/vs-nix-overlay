@@ -5,10 +5,11 @@
   meson,
   ninja,
   pkg-config,
-  boost,
-  opencl-headers,
-  ocl-icd,
   vapoursynth,
+  withOpenCL ? false,
+  boost,
+  ocl-icd,
+  opencl-headers,
 }:
 stdenv.mkDerivation {
   pname = "eedi3m";
@@ -27,12 +28,15 @@ stdenv.mkDerivation {
     ninja
   ];
 
-  buildInputs = [
-    boost
-    opencl-headers
-    ocl-icd
-    vapoursynth
-  ];
+  buildInputs =
+    [
+      boost
+      vapoursynth
+    ]
+    ++ lib.optional withOpenCL [
+      ocl-icd
+      opencl-headers
+    ];
 
   postPatch = ''
     substituteInPlace meson.build \
@@ -40,6 +44,9 @@ stdenv.mkDerivation {
   '';
 
   mesonBuildType = "release";
+  mesonFlags = [
+    (lib.mesonBool "opencl" withOpenCL)
+  ];
 
   meta = with lib; {
     description = "An intra-field only deinterlacer";
