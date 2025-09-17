@@ -37,6 +37,9 @@ stdenv.mkDerivation rec {
   '';
 
   mesonBuildType = "release";
+  mesonFlags = [
+    "-Db_lto=false"
+  ];
 
   meta = with lib; {
     description = "An intra-field only deinterlacer";
