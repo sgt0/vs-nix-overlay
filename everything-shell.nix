@@ -11,7 +11,7 @@
 }:
 with pkgs; let
   vapoursynth = pkgs.vapoursynth.withPlugins [
-    vapoursynthPlugins.akarin
+    vapoursynthPlugins.akarin_jet
     vapoursynthPlugins.ares
     vapoursynthPlugins.bilateral
     vapoursynthPlugins.bs
