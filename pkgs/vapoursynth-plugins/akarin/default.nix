@@ -44,5 +44,7 @@ stdenv.mkDerivation {
     homepage = "https://github.com/AkarinVS/vapoursynth-plugin";
     license = licenses.lgpl3;
     platforms = platforms.all;
+    # Depends on LLVM 15 which is EoL and has been removed from nixpkgs.
+    broken = true;
   };
 }
