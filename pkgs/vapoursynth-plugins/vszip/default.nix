@@ -3,23 +3,23 @@
   stdenv,
   fetchFromGitHub,
   callPackage,
-  zig_0_14,
+  zig,
   optimizeLevel ? "ReleaseFast",
 }: let
-  zig_hook = zig_0_14.hook.overrideAttrs {
+  zig_hook = zig.hook.overrideAttrs {
     zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
   };
 in
   stdenv.mkDerivation rec {
     pname = "vszip";
     # renovate: datasource=github-releases depName=dnjulek/vapoursynth-zip extractVersion=^R(?<version>.+)$
-    version = "9";
+    version = "10";
 
     src = fetchFromGitHub {
       owner = "dnjulek";
       repo = "vapoursynth-zip";
       rev = "refs/tags/R${version}";
-      hash = "sha256-aru8HlfL8Aq/kM61omB+PdSTFin75mE9LHeqIthSXT8=";
+      hash = "sha256-ITUxz3bM2xjFlIh4qZ8zJ4uKB50V7kjtImApOp0rK6M=";
     };
 
     nativeBuildInputs = [
