@@ -34,6 +34,7 @@
   testers,
   version,
   hash,
+  darwinMinVersionHook,
 } @ args:
 stdenv.mkDerivation (finalAttrs: {
   pname = "vapoursynth";
@@ -51,17 +52,21 @@ stdenv.mkDerivation (finalAttrs: {
     autoreconfHook
     makeWrapper
   ];
-  buildInputs = [
-    zimg
-    libass
-    (python3.withPackages (
-      ps:
-        with ps; [
-          sphinx
-          cython
-        ]
-    ))
-  ];
+  buildInputs =
+    [
+      zimg
+      libass
+      (python3.withPackages (
+        ps:
+          with ps; [
+            sphinx
+            cython
+          ]
+      ))
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      (darwinMinVersionHook "13.3")
+    ];
 
   enableParallelBuilding = true;
   doInstallCheck = !stdenv.hostPlatform.isDarwin;
