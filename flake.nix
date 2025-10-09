@@ -137,6 +137,21 @@
             python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.ffms2)"
             touch $out
           '';
+
+        vs72 =
+          pkgs.runCommandLocal "vs72-check"
+          {
+            nativeBuildInputs = with pkgs; [
+              python3
+              (outputs.packages.${system}.vapoursynth_72.withPlugins [
+                outputs.packages.${system}.vapoursynthPlugins.vszip
+              ])
+            ];
+          }
+          ''
+            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.vszip)"
+            touch $out
+          '';
       };
     });
   in
