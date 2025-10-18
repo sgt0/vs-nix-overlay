@@ -59,5 +59,6 @@ stdenv.mkDerivation rec {
     homepage = "hhttps://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF";
     license = licenses.wtfpl;
     platforms = platforms.all;
+    broken = true; # Build fails with latest OpenCL.
   };
 }
