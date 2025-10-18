@@ -10,15 +10,16 @@
   ocl-icd,
   vapoursynth,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "sneedif";
-  version = "2-unstable-2025-06-03";
+  # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF extractVersion=^R(?<version>.+)$
+  version = "3";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-SNEEDIF";
-    rev = "55cbf2c35721ba5c228c0b1b906f97f45459a3b7";
-    hash = "sha256-kBcRbE+18AI8MbsGjYBRR1i1PNmwiZanZhvlRX7HZ3g=";
+    rev = "refs/tags/R${version}";
+    hash = "sha256-EaX4G6S/BN4g63YFiO/jc+Nx9K0SDiNS0I5td1MRip0=";
   };
 
   strictDeps = true;
@@ -56,7 +57,7 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Setsugen No Ensemble of Edge Directed Interpolation Functions";
     homepage = "hhttps://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF";
-    license = licenses.unfree;
+    license = licenses.wtfpl;
     platforms = platforms.all;
   };
 }
