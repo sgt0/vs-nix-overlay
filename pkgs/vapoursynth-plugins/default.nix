@@ -44,6 +44,7 @@ lib.makeScope newScope (self:
         sneedif = callPackage ./sneedif {};
         tivtc = callPackage ./tivtc {};
         tmedian = callPackage ./tmedian {};
+        trt = callPackage ./trt {};
         vivtc = callPackage ./vivtc {};
         vsnlq = callPackage ./vsnlq {};
         vszip = callPackage ./vszip {};
