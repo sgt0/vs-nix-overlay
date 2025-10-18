@@ -7,13 +7,13 @@
 }:
 stdenv.mkDerivation {
   pname = "fmtc";
-  version = "30-unstable-2025-01-19";
+  version = "30-unstable-2025-10-18";
 
   src = fetchFromGitLab {
     owner = "EleonoreMizo";
     repo = "fmtconv";
-    rev = "18a9cecba72287e3a2895ccc537aa1658059b4d0";
-    hash = "sha256-fpsLGBTLGclGut0xHogpxlThKKvsz9g6f95xJf7Bk5o=";
+    rev = "259b702e4e3c1e2fc6d7b2c8e83d95b612519e89";
+    hash = "sha256-u/j7Z+BHRxqcAw1GfI3XJixz2m/NnM8ROKRNE0lZxnc=";
   };
 
   nativeBuildInputs = [
