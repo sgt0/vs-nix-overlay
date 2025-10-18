@@ -37,6 +37,7 @@ with pkgs; let
     vapoursynthPlugins.rgvs
     vapoursynthPlugins.tivtc
     vapoursynthPlugins.tmedian
+    vapoursynthPlugins.trt
     vapoursynthPlugins.vivtc
     vapoursynthPlugins.vszip
     vapoursynthPlugins.webp
