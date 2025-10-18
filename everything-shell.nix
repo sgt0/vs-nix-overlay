@@ -35,7 +35,6 @@ with pkgs; let
     vapoursynthPlugins.resize2
     vapoursynthPlugins.retinex
     vapoursynthPlugins.rgvs
-    vapoursynthPlugins.sneedif
     vapoursynthPlugins.tivtc
     vapoursynthPlugins.tmedian
     vapoursynthPlugins.vivtc
