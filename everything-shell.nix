@@ -41,6 +41,7 @@ with pkgs; let
     vapoursynthPlugins.vivtc
     vapoursynthPlugins.vszip
     vapoursynthPlugins.webp
+    vapoursynthPlugins.zsmooth
   ];
 in
   pkgs.mkShell {
