@@ -25,6 +25,7 @@ with pkgs; let
     vapoursynthPlugins.fftspectrum
     vapoursynthPlugins.fftspectrum_rs
     vapoursynthPlugins.fmtc
+    vapoursynthPlugins.llvmexpr
     vapoursynthPlugins.median
     vapoursynthPlugins.miscfilters
     vapoursynthPlugins.mv
