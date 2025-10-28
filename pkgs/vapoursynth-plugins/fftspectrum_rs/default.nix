@@ -7,16 +7,16 @@
 rustPlatform.buildRustPackage rec {
   pname = "fftspectrum_rs";
   # renovate: datasource=github-releases depName=sgt0/vapoursynth-fftspectrum-rs
-  version = "1.0.9";
+  version = "1.0.10";
 
   src = fetchFromGitHub {
     owner = "sgt0";
     repo = "vapoursynth-fftspectrum-rs";
     rev = "refs/tags/v${version}";
-    hash = "sha256-tLY3EzP2cbu4eb+6JUyltX0STZwAagid/kejQcsrfqc=";
+    hash = "sha256-LdgRZu3OqrXED7eTINhg7PgNGghZVld0kZr0aODV7YQ=";
   };
 
-  cargoHash = "sha256-HJ2hNcXRC6A2z353JsBsjtyAooJbuve1w5Us5QKaTc0=";
+  cargoHash = "sha256-US6re6nPtb3IyOktj1gx3mZVwmvNnzOuZ61+BTyARaw=";
 
   postInstall = ''
     mkdir $out/lib/vapoursynth
