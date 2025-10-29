@@ -8,6 +8,7 @@
   libllvm,
   libxml2,
   vapoursynth,
+  darwinMinVersionHook,
 }:
 clangStdenv.mkDerivation rec {
   pname = "llvmexpr";
@@ -27,10 +28,14 @@ clangStdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [
-    libllvm
-    vapoursynth
-  ];
+  buildInputs =
+    [
+      libllvm
+      vapoursynth
+    ]
+    ++ lib.optionals clangStdenv.hostPlatform.isDarwin [
+      (darwinMinVersionHook "13.3")
+    ];
 
   postPatch = ''
     substituteInPlace meson.build \
