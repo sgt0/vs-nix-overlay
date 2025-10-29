@@ -5,6 +5,7 @@
   cmake,
   soxr,
   vapoursynth,
+  darwinMinVersionHook,
 }:
 stdenv.mkDerivation rec {
   pname = "ares";
@@ -26,10 +27,14 @@ stdenv.mkDerivation rec {
     cmake
   ];
 
-  buildInputs = [
-    soxr
-    vapoursynth
-  ];
+  buildInputs =
+    [
+      soxr
+      vapoursynth
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      (darwinMinVersionHook "13.3")
+    ];
 
   postPatch = ''
     substituteInPlace CMakeLists.txt --replace-fail "-static" ""
