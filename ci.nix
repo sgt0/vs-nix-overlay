@@ -9,7 +9,7 @@ with builtins; let
       then licenseFromMeta
       else [licenseFromMeta];
   in
-    pkgs.lib.meta.availableOn pkgs.hostPlatform p
+    pkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform p
     && !(p.meta.broken or false)
     && builtins.all (license: license.free or true) licenseList;
   isCacheable = p: !(p.preferLocalBuild or false);
