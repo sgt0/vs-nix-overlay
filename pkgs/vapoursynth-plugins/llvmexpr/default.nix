@@ -13,7 +13,7 @@
 clangStdenv.mkDerivation rec {
   pname = "llvmexpr";
   # renovate: datasource=github-releases depName=yuygfgg/Vapoursynth-llvmexpr extractVersion=^R(?<version>.+)$
-  version = "3.1";
+  version = "3.2";
 
   src = fetchFromGitHub {
     owner = "yuygfgg";
