@@ -18,6 +18,7 @@ lib.makeScope newScope (self:
         descale = callPackage ./descale {};
         dfttest = callPackage ./dfttest {};
         dgm = callPackage ./dgm {};
+        edgemasks = callPackage ./edgemasks {};
         eedi2 = callPackage ./eedi2 {};
         eedi3m = callPackage ./eedi3m {};
         ffms2 = callPackage ./ffms2 {};
