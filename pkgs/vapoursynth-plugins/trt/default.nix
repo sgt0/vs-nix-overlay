@@ -12,13 +12,13 @@
 stdenv.mkDerivation rec {
   pname = "trt";
   # renovate: datasource=github-releases depName=AmusementClub/vs-mlrt
-  version = "15.13";
+  version = "15.14";
 
   src = fetchFromGitHub {
     owner = "AmusementClub";
     repo = "vs-mlrt";
     rev = "v${version}";
-    sha256 = "sha256-XLoSNDBCO6t7DiXQoZ+ajlQRNOkicJ/RkEwSEdr3//8=";
+    sha256 = "sha256-zmpfwmCaWDre6XDPFQz7TvCNG15HSbFew5jhWRJbjDI=";
   };
 
   sourceRoot = "source/vstrt";
