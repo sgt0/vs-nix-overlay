@@ -11,13 +11,13 @@
 stdenv.mkDerivation rec {
   pname = "nlm_cuda";
   # renovate: datasource=github-releases depName=AmusementClub/vs-nlm-cuda
-  version = "2";
+  version = "3";
 
   src = fetchFromGitHub {
     owner = "AmusementClub";
     repo = "vs-nlm-cuda";
     rev = "refs/tags/v${version}";
-    hash = "sha256-EPsmhvSeh9GafAWmyp4wtXwjzn1R0AGfuUR09VowDvE=";
+    hash = "sha256-HEZyiBsq61jfo0wmdATIRrybbivmD/YwH/Tdr70zzlc=";
   };
 
   nativeBuildInputs = [
