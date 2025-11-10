@@ -13,6 +13,7 @@ with pkgs; let
   vapoursynth = pkgs.vapoursynth.withPlugins [
     vapoursynthPlugins.akarin_jet
     vapoursynthPlugins.ares
+    vapoursynthPlugins.awarp
     vapoursynthPlugins.bilateral
     vapoursynthPlugins.bs
     vapoursynthPlugins.cambi
