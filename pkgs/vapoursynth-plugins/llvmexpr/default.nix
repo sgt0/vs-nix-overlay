@@ -5,6 +5,7 @@
   meson,
   ninja,
   pkg-config,
+  ctre,
   libllvm,
   libxml2,
   vapoursynth,
@@ -13,13 +14,13 @@
 clangStdenv.mkDerivation rec {
   pname = "llvmexpr";
   # renovate: datasource=github-releases depName=yuygfgg/Vapoursynth-llvmexpr extractVersion=^R(?<version>.+)$
-  version = "3.1";
+  version = "3.2";
 
   src = fetchFromGitHub {
     owner = "yuygfgg";
     repo = "Vapoursynth-llvmexpr";
     rev = "refs/tags/R${version}";
-    hash = "sha256-Eq9VYDrMtmFAiYDyAsestVmpRNLGEjT5HzLB/31J56s=";
+    hash = "sha256-2Jr/jk1rZyse7IFQ0BSviEFziTV3bpT7pH1m3H5P+FQ=";
   };
 
   nativeBuildInputs = [
@@ -30,6 +31,7 @@ clangStdenv.mkDerivation rec {
 
   buildInputs =
     [
+      ctre
       libllvm
       vapoursynth
     ]
