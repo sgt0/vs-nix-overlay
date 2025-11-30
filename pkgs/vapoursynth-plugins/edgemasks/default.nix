@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   pname = "edgemasks";
   # renovate: datasource=github-releases depName=HolyWu/VapourSynth-EdgeMasks extractVersion=^r(?<version>.+)$
-  version = "3.1";
+  version = "3.2";
 
   src = fetchFromGitHub {
     owner = "HolyWu";
     repo = "VapourSynth-EdgeMasks";
     rev = "refs/tags/r${version}";
-    hash = "sha256-mA77BJLT7oaPhuoI3ZVvGZmGjVkBZOmpWWpwd5hPY9Q=";
+    hash = "sha256-WQAxAxKR4BbvL02HeGeelTU4k9XbC7kO3KgU2mb+5qg=";
   };
 
   nativeBuildInputs = [
@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_variable(pkgconfig: 'libdir')" "get_option('libdir')"
+      --replace-fail "vapoursynth_dep.get_variable('libdir')" "get_option('libdir')"
   '';
 
   mesonBuildType = "release";
@@ -43,6 +43,6 @@ stdenv.mkDerivation rec {
     description = "EdgeMasks filter for VapourSynth";
     homepage = "https://github.com/HolyWu/VapourSynth-EdgeMasks";
     license = licenses.mit;
-    platforms = platforms.x86;
+    platforms = platforms.all;
   };
 }
