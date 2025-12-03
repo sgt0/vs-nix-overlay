@@ -11,7 +11,7 @@
   };
 in
   stdenv.mkDerivation rec {
-    pname = "zsmooth";
+    pname = "zscene";
     # renovate: datasource=github-releases depName=adworacz/zscene
     version = "0.1";
 
