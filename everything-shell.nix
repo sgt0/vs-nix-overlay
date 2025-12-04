@@ -21,6 +21,7 @@ with pkgs; let
     vapoursynthPlugins.depan
     vapoursynthPlugins.descale
     vapoursynthPlugins.dfttest
+    vapoursynthPlugins.dmetrics
     vapoursynthPlugins.edgemasks
     vapoursynthPlugins.eedi3m
     vapoursynthPlugins.ffms2
