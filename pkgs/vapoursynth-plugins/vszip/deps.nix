@@ -81,20 +81,21 @@ with lib; let
 in
   linkFarm name [
     {
-      name = "vapoursynth-4.0.0-jLYMQw95AgBWLJymsYybHIFxNu7d6shoYn8y8WZfH8T3";
+      name = "vapoursynth-4.0.0-jLYMQ799AgCA8sL5lgewK9acIrAKjs-ByT2pdKI5dHq2";
       path = fetchZigArtifact {
         name = "vapoursynth";
-        url = "git+https://github.com/dnjulek/vapoursynth-zig.git#a94152c87e4242a582ec5f30f4d4e890c14e2233";
-        hash = "sha256-ZhWDmdq15NMBZe9LxM+AhjAT78yI0xNz+My1UOF9mYc=";
-        rev = "a94152c87e4242a582ec5f30f4d4e890c14e2233";
+        url = "git+https://github.com/dnjulek/vapoursynth-zig.git#8e93fe3433bb977135f81040bb59d964c58a1cb9";
+        hash = "sha256-tcBr4q7/8u/8xmBO2dbtExi3n5j006nh6/fniO37UK4=";
+        rev = "8e93fe3433bb977135f81040bb59d964c58a1cb9";
       };
     }
     {
-      name = "zigimg-0.1.0-8_eo2vHnEwCIVW34Q14Ec-xUlzIoVg86-7FU2ypPtxms";
+      name = "zigimg-0.1.0-8_eo2jNrFQD4mu3EAUkfQRmCkyfprdIXc8JQ6uyxhjSQ";
       path = fetchZigArtifact {
         name = "zigimg";
-        url = "https://github.com/zigimg/zigimg/archive/d7b7ab0ba0899643831ef042bd73289510b39906.zip";
-        hash = "sha256-lJKzZ5DnznGjf8y9OF9gnvgCz1GlLREIui4xN/B2aVc=";
+        url = "git+https://github.com/zigimg/zigimg.git#362cdd6bce109f7bc674be134cddd378f52da5d4";
+        hash = "sha256-Pe7OAtocaH18FhpSwz3NNZLrBI9BS1rfOehq2UVmu6g=";
+        rev = "362cdd6bce109f7bc674be134cddd378f52da5d4";
       };
     }
   ]
