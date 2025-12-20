@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-resize2";
     rev = "refs/tags/${version}";
-    hash = "sha256-mmFr65dpR7W7g3rBP6UikSSYpS+NIhwYrBj31xP01HI=";
+    hash = "sha256-WkEi9OqJPF1DQrKiVirYlb9jPtONUpbXO11hjkckcc4=";
     nativeBuildInputs = [
       cacert
       git
