@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "resize2";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-resize2
-  version = "0.3.3";
+  version = "0.3.4";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
