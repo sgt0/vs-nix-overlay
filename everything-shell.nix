@@ -40,6 +40,7 @@ with pkgs; let
     vapoursynthPlugins.resize2
     vapoursynthPlugins.retinex
     vapoursynthPlugins.rgvs
+    vapoursynthPlugins.scxvid
     vapoursynthPlugins.tivtc
     vapoursynthPlugins.tmedian
     vapoursynthPlugins.trt
