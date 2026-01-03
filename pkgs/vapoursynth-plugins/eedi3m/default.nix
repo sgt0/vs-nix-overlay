@@ -11,13 +11,13 @@
 stdenv.mkDerivation rec {
   pname = "eedi3m";
   # renovate: datasource=github-releases depName=HomeOfVapourSynthEvolution/VapourSynth-EEDI3 extractVersion=^r(?<version>.+)$
-  version = "7";
+  version = "8";
 
   src = fetchFromGitHub {
     owner = "HomeOfVapourSynthEvolution";
     repo = "VapourSynth-EEDI3";
     rev = "refs/tags/r${version}";
-    hash = "sha256-pNFzJqhyZI/xWaAtpw1Fp6jd4JiGS/LF2PJ7zW5exGk=";
+    hash = "sha256-QSysnsoFYlgbik7AUQIwos4vClVRvFh9gZYu2lPREa0=";
   };
 
   nativeBuildInputs = [
@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_variable(pkgconfig: 'libdir')" "get_option('libdir')"
+      --replace-fail "vapoursynth_dep.get_variable('libdir')" "get_option('libdir')"
   '';
 
   mesonBuildType = "release";
