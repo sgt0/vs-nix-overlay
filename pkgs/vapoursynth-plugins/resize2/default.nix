@@ -12,13 +12,13 @@
 stdenv.mkDerivation rec {
   pname = "resize2";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-resize2
-  version = "0.3.3";
+  version = "0.3.4";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-resize2";
     rev = "refs/tags/${version}";
-    hash = "sha256-WkEi9OqJPF1DQrKiVirYlb9jPtONUpbXO11hjkckcc4=";
+    hash = "sha256-Ac80E8t/Lf9g93ouBkpSrUokT94fdKSt60pF6sjR63c=";
     nativeBuildInputs = [
       cacert
       git
@@ -54,7 +54,6 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace meson.build \
-      --replace-fail "link_args: ['-static']," "# link_args: ['-static']," \
       --replace-fail "vapoursynth_dep.get_variable(pkgconfig: 'libdir')" "get_option('libdir')"
   '';
 
@@ -66,6 +65,5 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2";
     license = licenses.lgpl21;
     platforms = platforms.all;
-    broken = stdenv.cc.isClang; # clang++: error: unsupported argument 'armv7-a' to option '-march='
   };
 }
