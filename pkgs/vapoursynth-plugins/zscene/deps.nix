@@ -81,12 +81,12 @@ with lib; let
 in
   linkFarm name [
     {
-      name = "vapoursynth-4.0.0-jLYMQw-HAgBK4pMJZBYzTNJuv5uuRlzKqpuY0sd2c_gi";
+      name = "vapoursynth-4.0.0-jLYMQw95AgBWLJymsYybHIFxNu7d6shoYn8y8WZfH8T3";
       path = fetchZigArtifact {
         name = "vapoursynth";
-        url = "git+https://github.com/dnjulek/vapoursynth-zig.git#7cb6779c4e40fb7415def9c60162e86ccd0eaa93";
-        hash = "sha256-LJr+62vRYl1ZiyLlUn5JUNtqVE8s7PflRy7gucTHGXQ=";
-        rev = "7cb6779c4e40fb7415def9c60162e86ccd0eaa93";
+        url = "git+https://github.com/dnjulek/vapoursynth-zig.git#a94152c87e4242a582ec5f30f4d4e890c14e2233";
+        hash = "sha256-ZhWDmdq15NMBZe9LxM+AhjAT78yI0xNz+My1UOF9mYc=";
+        rev = "a94152c87e4242a582ec5f30f4d4e890c14e2233";
       };
     }
   ]
