@@ -43,6 +43,9 @@
       "72" = {
         hash = "sha256-LRRz4471Rl/HwJ14zAkU/f2Acuofja8c0pGkuWihhsM=";
       };
+      "73" = {
+        hash = "sha256-cs+MEnOi1bwA52fiTIlGGzYjy5/m/FdoK55WSADR/gQ=";
+      };
     }
     // vapoursynthVersions;
 

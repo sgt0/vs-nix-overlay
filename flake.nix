@@ -87,7 +87,7 @@
       formatter = pkgs.alejandra;
 
       checks = let
-        vsVersions = ["67" "68" "69" "70" "71" "72"];
+        vsVersions = ["67" "68" "69" "70" "71" "72" "73"];
         plugins = ["bs" "cambi" "descale" "eedi3m" "ffms2" "resize2" "vszip" "zscene"];
         combinations = nixpkgs.lib.cartesianProduct {
           vsVersion = vsVersions;
