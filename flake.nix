@@ -24,7 +24,6 @@
     systems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
     outputs = flake-utils.lib.eachSystem systems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
       packages =
         nixpkgs.lib.concatMapAttrs
         (k: v:
@@ -52,6 +51,31 @@
           else v)
         (import ./default.nix {inherit pkgs;});
 
+      mkPluginCheck = {
+        pluginName,
+        vsVersion,
+        pythonAttr ? pluginName,
+      }: let
+        vsAttr = "vapoursynth_${vsVersion}";
+        pluginAttr = pluginName;
+        checkName = "vs${vsVersion}-${pluginName}-check";
+      in
+        pkgs.runCommandLocal checkName
+        {
+          nativeBuildInputs = with pkgs; [
+            python3
+            (packages.${vsAttr}.withPlugins [
+              packages.vapoursynthPlugins.${pluginAttr}
+            ])
+          ];
+        }
+        ''
+          python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.${pythonAttr})"
+          touch $out
+        '';
+    in {
+      inherit packages;
+
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
           alejandra
@@ -62,97 +86,26 @@
 
       formatter = pkgs.alejandra;
 
-      checks = {
-        vs67 =
-          pkgs.runCommandLocal "vs67-check"
-          {
-            nativeBuildInputs = with pkgs; [
-              python3
-              (outputs.packages.${system}.vapoursynth_67.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.akarin_jet
-              ])
-            ];
-          }
-          ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.akarin)"
-            touch $out
-          '';
-
-        vs68 =
-          pkgs.runCommandLocal "vs68-check"
-          {
-            nativeBuildInputs = with pkgs; [
-              python3
-              (outputs.packages.${system}.vapoursynth_68.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.bs
-              ])
-            ];
-          }
-          ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.bs)"
-            touch $out
-          '';
-
-        vs69 =
-          pkgs.runCommandLocal "vs69-check"
-          {
-            nativeBuildInputs = with pkgs; [
-              python3
-              (outputs.packages.${system}.vapoursynth_69.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.cambi
-              ])
-            ];
-          }
-          ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.cambi)"
-            touch $out
-          '';
-
-        vs70 =
-          pkgs.runCommandLocal "vs70-check"
-          {
-            nativeBuildInputs = with pkgs; [
-              python3
-              (outputs.packages.${system}.vapoursynth_70.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.descale
-              ])
-            ];
-          }
-          ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.descale)"
-            touch $out
-          '';
-
-        vs71 =
-          pkgs.runCommandLocal "vs71-check"
-          {
-            nativeBuildInputs = with pkgs; [
-              python3
-              (outputs.packages.${system}.vapoursynth_71.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.ffms2
-              ])
-            ];
-          }
-          ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.ffms2)"
-            touch $out
-          '';
-
-        vs72 =
-          pkgs.runCommandLocal "vs72-check"
-          {
-            nativeBuildInputs = with pkgs; [
-              python3
-              (outputs.packages.${system}.vapoursynth_72.withPlugins [
-                outputs.packages.${system}.vapoursynthPlugins.vszip
-              ])
-            ];
-          }
-          ''
-            python -c "import vapoursynth; print(vapoursynth.core); print(vapoursynth.core.vszip)"
-            touch $out
-          '';
-      };
+      checks = let
+        vsVersions = ["67" "68" "69" "70" "71" "72"];
+        plugins = ["bs" "cambi" "descale" "eedi3m" "ffms2" "resize2" "vszip" "zscene"];
+        combinations = nixpkgs.lib.cartesianProduct {
+          vsVersion = vsVersions;
+          pluginName = plugins;
+        };
+      in
+        nixpkgs.lib.listToAttrs
+        (map
+          ({
+            vsVersion,
+            pluginName,
+          }:
+            nixpkgs.lib.nameValuePair
+            "vs${vsVersion}-${pluginName}"
+            (mkPluginCheck {
+              inherit pluginName vsVersion;
+            }))
+          combinations);
     });
   in
     outputs

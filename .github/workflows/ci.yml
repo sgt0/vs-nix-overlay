@@ -51,6 +51,10 @@ jobs:
       - name: Build Nix packages
         run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
 
-      - run: nix flake check --keep-going --print-build-logs
-        continue-on-error: true
+      - run: nix flake check --impure --keep-going --print-build-logs
+        env:
+          NIXPKGS_ALLOW_BROKEN: 1
+          NIXPKGS_ALLOW_UNFREE: 1
+          NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM: 1
+
       - run: nix flake show
