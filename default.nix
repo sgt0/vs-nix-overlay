@@ -9,6 +9,7 @@
       vapoursynth_70 = vapoursynthPackages."70";
       vapoursynth_71 = vapoursynthPackages."71";
       vapoursynth_72 = vapoursynthPackages."72";
+      vapoursynth_73 = vapoursynthPackages."73";
     })
     vapoursynthPackages
     vapoursynth_67
@@ -17,6 +18,7 @@
     vapoursynth_70
     vapoursynth_71
     vapoursynth_72
+    vapoursynth_73
     ;
 
   vapoursynthPlugins = pkgs.lib.recurseIntoAttrs (pkgs.callPackage ./pkgs/vapoursynth-plugins {});
