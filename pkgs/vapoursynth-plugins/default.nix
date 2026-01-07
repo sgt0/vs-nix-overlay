@@ -6,7 +6,9 @@
 lib.makeScope newScope (self:
     with self;
       {
-        akarin = callPackage ./akarin {};
+        # Broken: depends on LLVM 15 which is EoL and has been removed from nixpkgs.
+        # akarin = callPackage ./akarin {};
+
         akarin_jet = callPackage ./akarin_jet {};
         ares = callPackage ./ares {};
         awarp = callPackage ./awarp {};
