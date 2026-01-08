@@ -113,5 +113,12 @@
       overlays.default = final: prev: {
         vspkgs = outputs.packages.${prev.system};
       };
+
+      templates = {
+        simple-flake = {
+          path = ./examples/simple-flake;
+          description = "A flake using flake-utils.lib.simpleFlake and vs-nix-overlay";
+        };
+      };
     };
 }

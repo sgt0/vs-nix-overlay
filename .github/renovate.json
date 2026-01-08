@@ -6,9 +6,15 @@
     ":disableRateLimiting",
     ":semanticCommits"
   ],
+  "ignorePaths": [],
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": null
+    "schedule": null,
+    "commitMessagePrefix": "flake:",
+    "commitMessageTopic": "lock file maintenance",
+    "commitMessageAction": null,
+    "commitMessageExtra": null,
+    "commitMessageSuffix": null
   },
   "nix": {
     "enabled": true
