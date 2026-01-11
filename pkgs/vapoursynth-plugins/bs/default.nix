@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "bs";
   # renovate: datasource=github-releases depName=vapoursynth/bestsource extractVersion=^R(?<version>.+)$
-  version = "15";
+  version = "16";
 
   outputs = [
     "out"
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     owner = "vapoursynth";
     repo = "bestsource";
     rev = "refs/tags/R${version}";
-    hash = "sha256-Nr5ARQlW29IpAfhkrnf+aLTpR+VlYgeRUHzEjpVr6EY=";
+    hash = "sha256-t8dRP53hw68VElVV3og6WkNE75lmKx8llQVsfpg49+0=";
     fetchSubmodules = true;
   };
 
@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_variable(pkgconfig: 'libdir')" "get_option('libdir')"
+      --replace-fail "vapoursynth_dep.get_variable('libdir')" "get_option('libdir')"
   '';
 
   mesonBuildType = "release";
