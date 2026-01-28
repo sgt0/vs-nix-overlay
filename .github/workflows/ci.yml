@@ -29,13 +29,13 @@ jobs:
       - name: Install nix
         uses: cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15 # v31.9.0
         with:
-          nix_path: nixpkgs=https://github.com/cachix/devenv-nixpkgs/archive/rolling.tar.gz
+          nix_path: nixpkgs=channel:nixpkgs-unstable
 
       - name: Set up Nix cache
         uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
         with:
           name: vs-nix-overlay
-          extraPullNames: devenv
+          extraPullNames: devenv,sgt0
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Check evaluation
@@ -81,7 +81,7 @@ jobs:
         uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
         with:
           name: vs-nix-overlay
-          extraPullNames: sgt0
+          extraPullNames: devenv,sgt0
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Test
