@@ -7,7 +7,7 @@
 rustPlatform.buildRustPackage rec {
   pname = "fftspectrum_rs";
   # renovate: datasource=github-releases depName=sgt0/vapoursynth-fftspectrum-rs
-  version = "1.0.10";
+  version = "1.0.11";
 
   src = fetchFromGitHub {
     owner = "sgt0";
