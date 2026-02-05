@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "trt";
   # renovate: datasource=github-releases depName=AmusementClub/vs-mlrt
-  version = "15.14";
+  version = "15.15";
 
   src = fetchFromGitHub {
     owner = "AmusementClub";
