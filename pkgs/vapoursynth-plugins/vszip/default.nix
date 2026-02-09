@@ -26,8 +26,8 @@ in
       zig_hook
     ];
 
-    postPatch = ''
-      cp -a ${callPackage ./deps.nix {}}/. $ZIG_GLOBAL_CACHE_DIR/p
+    postConfigure = ''
+      ln -s ${callPackage ./deps.nix {}} $ZIG_GLOBAL_CACHE_DIR/p
     '';
 
     postInstall = ''
