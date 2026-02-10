@@ -12,13 +12,13 @@
 stdenv.mkDerivation rec {
   pname = "trt";
   # renovate: datasource=github-releases depName=AmusementClub/vs-mlrt
-  version = "15.14";
+  version = "15.15";
 
   src = fetchFromGitHub {
     owner = "AmusementClub";
     repo = "vs-mlrt";
     rev = "v${version}";
-    sha256 = "sha256-zmpfwmCaWDre6XDPFQz7TvCNG15HSbFew5jhWRJbjDI=";
+    sha256 = "sha256-g8F1mw+Q+1ZkCuZs6dTn1Dffq3OPyE/8bXqGvrAHxfs=";
   };
 
   sourceRoot = "source/vstrt";
@@ -36,6 +36,8 @@ stdenv.mkDerivation rec {
     cudatoolkit
     vapoursynth
   ];
+
+  strictDeps = true;
 
   postPatch = ''
     substituteInPlace CMakeLists.txt \
@@ -59,6 +61,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl3;
     badPlatforms = optionals (!cudaSupport) platforms.all;
     broken = !cudaSupport;
-    platforms = platforms.all;
+    platforms = optionals cudaSupport platforms.all;
   };
 }
