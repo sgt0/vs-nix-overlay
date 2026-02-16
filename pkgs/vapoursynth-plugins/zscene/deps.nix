@@ -7,9 +7,7 @@
   runCommandLocal,
   zig,
   name ? "zig-packages",
-}:
-with builtins;
-with lib; let
+}: let
   unpackZigArtifact = {
     name,
     artifact,
@@ -35,9 +33,9 @@ with lib; let
     hash,
     rev ? throw "rev is required, remove and regenerate the zon2json-lock file",
   }: let
-    parts = splitString "#" url;
-    url_base = elemAt parts 0;
-    url_without_query = elemAt (splitString "?" url_base) 0;
+    parts = lib.splitString "#" url;
+    url_base = lib.elemAt parts 0;
+    url_without_query = lib.elemAt (lib.splitString "?" url_base) 0;
   in
     fetchgit {
       inherit name rev hash;
@@ -51,9 +49,9 @@ with lib; let
     hash,
     ...
   } @ args: let
-    parts = splitString "://" url;
-    proto = elemAt parts 0;
-    path = elemAt parts 1;
+    parts = lib.splitString "://" url;
+    proto = lib.elemAt parts 0;
+    path = lib.elemAt parts 1;
     fetcher = {
       "git+http" = fetchGitZig (
         args

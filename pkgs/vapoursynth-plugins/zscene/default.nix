@@ -13,13 +13,13 @@ in
   stdenv.mkDerivation rec {
     pname = "zscene";
     # renovate: datasource=github-releases depName=adworacz/zscene
-    version = "0.3";
+    version = "0.4";
 
     src = fetchFromGitHub {
       owner = "adworacz";
       repo = "zscene";
       rev = "refs/tags/${version}";
-      hash = "sha256-fcrMfGSdbTgNNTgVElNThmoPuCBmXyugCkQYJBaDcKI=";
+      hash = "sha256-qTWYPhXjXRwSaVmF8OWwCwQAxwZAQ/R+wL0wXH7tOfo=";
     };
 
     nativeBuildInputs = [
