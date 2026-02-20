@@ -33,6 +33,7 @@ lib.makeScope newScope (self:
         fpng = callPackage ./fpng {};
         hist = callPackage ./hist {};
         llvmexpr = callPackage ./llvmexpr {};
+        manipmv = callPackage ./manipmv {};
         median = callPackage ./median {};
         miscfilters = callPackage ./miscfilters {};
         mv = callPackage ./mv {};
@@ -59,9 +60,6 @@ lib.makeScope newScope (self:
         webp = callPackage ./webp {};
         zscene = callPackage ./zscene {};
         zsmooth = callPackage ./zsmooth {};
-
-        # Requires Zig nightly.
-        # manipmv = callPackage ./manipmv {};
       }
       // lib.optionalAttrs config.allowAliases {
         # Aliases.
