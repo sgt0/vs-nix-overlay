@@ -2,42 +2,43 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  zig, # Requires nightly.
+  callPackage,
+  zig,
   optimizeLevel ? "ReleaseFast",
-}:
-stdenv.mkDerivation rec {
-  pname = "manipmv";
-  # renovate: datasource=github-releases depName=Mikewando/manipulate-motion-vectors
-  version = "1.2.0";
-
-  src = fetchFromGitHub {
-    owner = "Mikewando";
-    repo = "manipulate-motion-vectors";
-    rev = "refs/tags/${version}";
-    hash = "sha256-QkNryGTateMk34ijm2tpwdspspG6ZcnpcTei9nefKoE=";
+}: let
+  zig_hook = zig.hook.overrideAttrs {
+    zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
   };
+in
+  stdenv.mkDerivation rec {
+    pname = "manipmv";
+    # renovate: datasource=github-releases depName=Mikewando/manipulate-motion-vectors
+    version = "1.2.2";
 
-  nativeBuildInputs = [
-    zig
-  ];
+    src = fetchFromGitHub {
+      owner = "Mikewando";
+      repo = "manipulate-motion-vectors";
+      rev = "refs/tags/${version}";
+      hash = "sha256-HdYH/zgrZe8Sx67dx2eLqNydphrRWvQv7xOGrfKXoiI=";
+    };
 
-  dontConfigure = true;
+    nativeBuildInputs = [
+      zig_hook
+    ];
 
-  preBuild = ''
-    # Necessary for zig cache to work.
-    export HOME=$TMPDIR
-  '';
+    postConfigure = ''
+      ln -s ${callPackage ./deps.nix {}} $ZIG_GLOBAL_CACHE_DIR/p
+    '';
 
-  installPhase = ''
-    runHook preInstall
-    zig build -Doptimize=${optimizeLevel} --prefix $out/vapoursynth install
-    runHook postInstall
-  '';
+    postInstall = ''
+      mkdir -p $out/lib/vapoursynth
+      ln -s $out/lib/libmanipmv${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libmanipmv${stdenv.hostPlatform.extensions.sharedLibrary}
+    '';
 
-  meta = with lib; {
-    description = "A vapoursynth plugin to do potentially useful things with motion vectors that have already been generated.";
-    homepage = "https://github.com/Mikewando/manipulate-motion-vectors";
-    license = licenses.lgpl21;
-    platforms = platforms.all;
-  };
-}
+    meta = with lib; {
+      description = "A vapoursynth plugin to do potentially useful things with motion vectors that have already been generated.";
+      homepage = "https://github.com/Mikewando/manipulate-motion-vectors";
+      license = licenses.lgpl21;
+      platforms = platforms.all;
+    };
+  }
