@@ -45,5 +45,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian";
     license = licenses.mit;
     platforms = platforms.x86_64;
+    broken = stdenv.cc.isClang; # SIMD type conflicts with Clang.
   };
 }
