@@ -8,17 +8,18 @@
   libllvm,
   libxml2,
   vapoursynth,
+  darwinMinVersionHook,
 }:
 stdenv.mkDerivation rec {
   pname = "akarin_jet";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/akarin-vapoursynth-plugin
-  version = "1.1.0";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "akarin-vapoursynth-plugin";
     rev = "refs/tags/v${version}";
-    hash = "sha256-VeG2rMIuS//Ov0gbLJUFXxuOIvqoUV6LN5Mc9abtVm4=";
+    hash = "sha256-xXJ70I+gVNzijVJjly4n7/LXrS78ICttWm2Q4Q8JZiI=";
   };
 
   nativeBuildInputs = [
@@ -27,11 +28,14 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [
-    libllvm
-    libxml2
-    vapoursynth
-  ];
+  buildInputs =
+    [
+      libllvm
+      libxml2
+      vapoursynth
+    ]
+    # `std::to_chars()` support.
+    ++ lib.optional stdenv.hostPlatform.isDarwin (darwinMinVersionHook "26.0");
 
   postPatch = ''
     substituteInPlace meson.build \
