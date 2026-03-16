@@ -58,6 +58,7 @@ lib.makeScope newScope (self:
         vszip = callPackage ./vszip {};
         warp = callPackage ./warp {};
         webp = callPackage ./webp {};
+        zivtc = callPackage ./zivtc {};
         zscene = callPackage ./zscene {};
         zsmooth = callPackage ./zsmooth {};
       }
