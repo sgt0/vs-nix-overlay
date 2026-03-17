@@ -104,13 +104,33 @@ then run:
 cachix use vs-nix-overlay
 ```
 
-Or, in a GitHub Actions workflow, use:
+Or in a GitHub Actions workflow:
 
 ```yaml
 - name: Set up Nix cache
   uses: cachix/cachix-action@v16
   with:
     name: vs-nix-overlay
+```
+
+Or add the following to a `flake.nix`:
+
+```nix
+{
+  nixConfig = {
+    extra-substituters = [ "https://vs-nix-overlay.cachix.org" ];
+    extra-trusted-public-keys = [ "vs-nix-overlay.cachix.org-1:djXRfBwBHJc3RlGdd+lLsJ+9p89ozt0mYLLb5zZIjs4=" ];
+  };
+
+  # ...
+}
+```
+
+Or this to `nix.conf`:
+
+```ini
+extra-substituters = https://vs-nix-overlay.cachix.org
+extra-trusted-public-keys = vs-nix-overlay.cachix.org-1:djXRfBwBHJc3RlGdd+lLsJ+9p89ozt0mYLLb5zZIjs4=
 ```
 
 ## Prior art
