@@ -12,13 +12,13 @@
 stdenv.mkDerivation rec {
   pname = "resize2";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-resize2
-  version = "0.3.4";
+  version = "0.4.0";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-resize2";
     rev = "refs/tags/${version}";
-    hash = "sha256-Ac80E8t/Lf9g93ouBkpSrUokT94fdKSt60pF6sjR63c=";
+    hash = "sha256-FziWCZcxm7jAQw59OKn93VTBh0uw1Ruwy+bex1se43A=";
     nativeBuildInputs = [
       cacert
       git
