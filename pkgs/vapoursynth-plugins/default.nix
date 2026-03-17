@@ -24,6 +24,7 @@ lib.makeScope newScope (self:
         dfttest = callPackage ./dfttest {};
         dgm = callPackage ./dgm {};
         dmetrics = callPackage ./dmetrics {};
+        dvdsrc2 = callPackage ./dvdsrc2 {};
         edgemasks = callPackage ./edgemasks {};
         eedi2 = callPackage ./eedi2 {};
         eedi3m = callPackage ./eedi3m {};
