@@ -20,13 +20,13 @@
 clangStdenv.mkDerivation rec {
   pname = "llvmexpr";
   # renovate: datasource=github-releases depName=Sunflower-Dolls/Vapoursynth-llvmexpr extractVersion=^R(?<version>.+)$
-  version = "4.3";
+  version = "4.4";
 
   src = fetchFromGitHub {
     owner = "Sunflower-Dolls";
     repo = "Vapoursynth-llvmexpr";
     rev = "refs/tags/R${version}";
-    hash = "sha256-MeT29ipzwT4hyxz+pknCm/waa4o/tkEToAx1pjoNn/k=";
+    hash = "sha256-wCWSLPEYB7ctz1t7cCQMVzHIFV6yVD+a0JprFvWEYtU=";
   };
 
   nativeBuildInputs = [
