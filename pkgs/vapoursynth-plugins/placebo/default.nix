@@ -12,13 +12,13 @@
 stdenv.mkDerivation rec {
   pname = "placebo";
   # renovate: datasource=github-releases depName=Lypheo/vs-placebo
-  version = "1.4.4";
+  version = "2.0.0";
 
   src = fetchFromGitHub {
     owner = "Lypheo";
     repo = "vs-placebo";
     rev = "refs/tags/${version}";
-    hash = "sha256-1DTdllP+Y4s+t2PMnpcgeLjOxOyyV/yhFSxPP9/Gy9M=";
+    hash = "sha256-t+Gw33dDeVMJvDT+1EnYvfRl07MHuYXx0YMitisWIr4=";
     fetchSubmodules = true;
   };
 
