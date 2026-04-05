@@ -40,6 +40,8 @@ in
       homepage = "https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Bilateral";
       license = licenses.gpl3;
       platforms = platforms.all;
-      broken = stdenv.cc.isClang; # configure script uses g++ arguments.
+      broken =
+        stdenv.cc.isClang # configure script uses g++ arguments.
+        || stdenv.hostPlatform.isAarch; # error: invalid CXXFLAGS/LDFLAGS
     };
   }
