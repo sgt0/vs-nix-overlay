@@ -44,6 +44,8 @@ in
       homepage = "https://github.com/Vapoursynth-Plugins-Gitify/DePan";
       license = licenses.gpl2;
       platforms = platforms.all;
-      broken = stdenv.cc.isClang; # configure script uses g++ arguments.
+      broken =
+        stdenv.cc.isClang # configure script uses g++ arguments.
+        || stdenv.hostPlatform.isAarch; # error: invalid CXXFLAGS/LDFLAGS
     };
   }
