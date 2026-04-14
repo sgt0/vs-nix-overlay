@@ -10,7 +10,7 @@
 stdenv.mkDerivation rec {
   pname = "scxvid";
   # renovate: datasource=github-releases depName=dubhater/vapoursynth-scxvid
-  version = "1";
+  version = "2";
 
   src = fetchFromGitHub {
     owner = "dubhater";
