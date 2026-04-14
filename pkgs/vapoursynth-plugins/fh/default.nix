@@ -9,7 +9,7 @@
 stdenv.mkDerivation rec {
   pname = "fh";
   # renovate: datasource=github-releases depName=dubhater/vapoursynth-fieldhint
-  version = "3";
+  version = "4";
 
   src = fetchFromGitHub {
     owner = "dubhater";
