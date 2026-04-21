@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   pname = "fpng";
   # renovate: datasource=github-releases depName=Mikewando/vsfpng
-  version = "1.0";
+  version = "1.1";
 
   src = fetchFromGitHub {
     owner = "Mikewando";
     repo = "vsfpng";
     rev = "refs/tags/${version}";
-    hash = "sha256-OteiAug0g6trH24Xj+wAPRVCJYDjCt9YB31mWN1Ep3Y=";
+    hash = "sha256-yfh/Rb0SQu2vDXHUbf/PE/th9Eim+CsMlQ/6jOy/lRk=";
   };
 
   nativeBuildInputs = [
@@ -31,7 +31,8 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_variable(pkgconfig: 'libdir')" "get_option('libdir')"
+      --replace-fail "'vapoursynth/include'" "'${vapoursynth}/include/vapoursynth'" \
+      --replace-fail "py.get_install_dir() / 'vapoursynth/plugins'" "get_option('libdir') / 'vapoursynth'"
   '';
 
   mesonBuildType = "release";
