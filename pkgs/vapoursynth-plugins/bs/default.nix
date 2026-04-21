@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "bs";
   # renovate: datasource=github-releases depName=vapoursynth/bestsource extractVersion=^R(?<version>.+)$
-  version = "16";
+  version = "17";
 
   outputs = [
     "out"
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     owner = "vapoursynth";
     repo = "bestsource";
     rev = "refs/tags/R${version}";
-    hash = "sha256-t8dRP53hw68VElVV3og6WkNE75lmKx8llQVsfpg49+0=";
+    hash = "sha256-f3SSGLzW9GhKjDO3WelDOvg2aD+ka2cdvAcQCFX8rDk=";
     fetchSubmodules = true;
   };
 
@@ -39,12 +39,14 @@ stdenv.mkDerivation rec {
     xxHash
   ];
 
-  postPatch = ''
-    substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_variable('libdir')" "get_option('libdir')"
-  '';
-
   mesonBuildType = "release";
+
+  postInstall = ''
+    mkdir -p $out/lib/vapoursynth
+    mv $out/lib/python*/site-packages/vapoursynth/plugins/libbestsource${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/
+    # Clean up the python site-packages tree left behind.
+    rm -rf $out/lib/python*
+  '';
 
   meta = with lib; {
     description = "A super great audio/video source and FFmpeg wrapper";
