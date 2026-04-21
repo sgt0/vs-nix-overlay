@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   pname = "edgemasks";
   # renovate: datasource=github-releases depName=HolyWu/VapourSynth-EdgeMasks extractVersion=^r(?<version>.+)$
-  version = "3.2";
+  version = "4";
 
   src = fetchFromGitHub {
     owner = "HolyWu";
     repo = "VapourSynth-EdgeMasks";
     rev = "refs/tags/r${version}";
-    hash = "sha256-WQAxAxKR4BbvL02HeGeelTU4k9XbC7kO3KgU2mb+5qg=";
+    hash = "sha256-H9kAmgoktxmxKWSG9ZBdxY4vGONlxOXwadNJdnIEjUI=";
   };
 
   nativeBuildInputs = [
@@ -30,8 +30,10 @@ stdenv.mkDerivation rec {
   ];
 
   postPatch = ''
+    sed -i "/^incdir = /,/^)/c\incdir = include_directories('${vapoursynth}/include/vapoursynth')" meson.build
     substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_variable('libdir')" "get_option('libdir')"
+      --replace-fail "import('python').find_installation(pure: false)" "disabler()" \
+      --replace-fail "py.get_install_dir() / 'vapoursynth/plugins'" "get_option('libdir') / 'vapoursynth'"
   '';
 
   mesonBuildType = "release";
