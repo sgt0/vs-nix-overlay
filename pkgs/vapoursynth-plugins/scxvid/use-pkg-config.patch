@@ -1,0 +1,34 @@
+--- a/meson.build
++++ b/meson.build
+@@ -11,26 +11,15 @@
+ ]
+ 
+ xvid_dep = meson.get_compiler('cpp').find_library('xvidcore')
++vapoursynth_dep = dependency('vapoursynth')
+ 
+-deps = [xvid_dep]
+-
+-incdir = include_directories(
+-    run_command(
+-        find_program('python', 'python3'),
+-        '-c',
+-        'import vapoursynth as vs; print(vs.get_include())',
+-        check: true,
+-    ).stdout().strip(),
+-)
+-
+-py = import('python').find_installation(pure: false)
++deps = [xvid_dep, vapoursynth_dep]
+ 
+ shared_module('scxvid',
+     sources,
+     dependencies : deps,
+     gnu_symbol_visibility: 'hidden',
+-    include_directories: incdir,
+     install: true,
+-    install_dir: py.get_install_dir() / 'vapoursynth/plugins',
++    install_dir: get_option('libdir') / 'vapoursynth',
+     name_prefix: '',
+-)
+\ No newline at end of file
++)
