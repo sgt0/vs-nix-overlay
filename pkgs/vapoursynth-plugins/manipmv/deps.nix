@@ -88,12 +88,12 @@ in
       };
     }
     {
-      name = "zig_set_version-0.2.0-VcSFVztkAAC2ZA9vFlkYsvHpDZLNGa9SlhKzuCGlO-10";
+      name = "zig_set_version-0.2.1-VcSFV0FkAAAr6WCGYZwuup5pWg62naL4FPuFiI0D5--P";
       path = fetchZigArtifact {
         name = "set_version";
-        url = "git+https://github.com/ritalin/zig-set-version#9fc39eaafd0bfd49090189fc6f772c24c1245c69";
-        hash = "sha256-mKoCKY6q0/vFM2PduKS0R7x9cCXlNlwx0+zHX/12yH0=";
-        rev = "9fc39eaafd0bfd49090189fc6f772c24c1245c69";
+        url = "git+https://github.com/ritalin/zig-set-version#14c65c533cd85b02ed5a7cff35398a413b9b6a7b";
+        hash = "sha256-hoQLPYvDJfHpBDUKUtxRZjOVEKmHRK2EQm+R23DPxn0=";
+        rev = "14c65c533cd85b02ed5a7cff35398a413b9b6a7b";
       };
     }
   ]

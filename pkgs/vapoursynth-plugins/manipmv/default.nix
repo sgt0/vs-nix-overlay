@@ -13,13 +13,13 @@ in
   stdenv.mkDerivation rec {
     pname = "manipmv";
     # renovate: datasource=github-releases depName=Mikewando/manipulate-motion-vectors
-    version = "1.2.2";
+    version = "1.3.0";
 
     src = fetchFromGitHub {
       owner = "Mikewando";
       repo = "manipulate-motion-vectors";
       rev = "refs/tags/${version}";
-      hash = "sha256-HdYH/zgrZe8Sx67dx2eLqNydphrRWvQv7xOGrfKXoiI=";
+      hash = "sha256-+aOdO7CqeIhOLfEPluv37rtxaucAdPMuNmpRVnkxw8I=";
     };
 
     nativeBuildInputs = [
