@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   pname = "awarp";
   # renovate: datasource=github-releases depName=HolyWu/VapourSynth-AWarp extractVersion=^r(?<version>.+)$
-  version = "2";
+  version = "3";
 
   src = fetchFromGitHub {
     owner = "HolyWu";
     repo = "VapourSynth-AWarp";
     rev = "refs/tags/r${version}";
-    hash = "sha256-np/mlWLVgfMqzyQojiVGkGg19Byp1r1ryP2241az3OI=";
+    hash = "sha256-GiP/BM431AfKGCGasotv0EC5w70l8tKOesS2V01QII0=";
   };
 
   nativeBuildInputs = [
@@ -30,8 +30,10 @@ stdenv.mkDerivation rec {
   ];
 
   postPatch = ''
+    sed -i "/^incdir = /,/^)/c\incdir = include_directories('${vapoursynth}/include/vapoursynth')" meson.build
     substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_variable('libdir')" "get_option('libdir')"
+      --replace-fail "import('python').find_installation(pure: false)" "disabler()" \
+      --replace-fail "py.get_install_dir() / 'vapoursynth/plugins'" "get_option('libdir') / 'vapoursynth'"
   '';
 
   mesonBuildType = "release";
