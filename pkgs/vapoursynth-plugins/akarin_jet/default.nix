@@ -13,7 +13,7 @@
 stdenv.mkDerivation rec {
   pname = "akarin_jet";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/akarin-vapoursynth-plugin
-  version = "1.2.0";
+  version = "1.4.0";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
