@@ -13,7 +13,7 @@
 stdenv.mkDerivation rec {
   pname = "sneedif";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF extractVersion=^R(?<version>.+)$
-  version = "3";
+  version = "4.2";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
