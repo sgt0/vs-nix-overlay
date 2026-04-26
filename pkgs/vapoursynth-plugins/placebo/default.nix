@@ -12,7 +12,7 @@
 stdenv.mkDerivation rec {
   pname = "placebo";
   # renovate: datasource=github-releases depName=Lypheo/vs-placebo
-  version = "2.0.0";
+  version = "2.0.2";
 
   src = fetchFromGitHub {
     owner = "Lypheo";
