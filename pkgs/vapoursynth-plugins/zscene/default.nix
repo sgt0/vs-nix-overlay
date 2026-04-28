@@ -3,23 +3,23 @@
   stdenv,
   fetchFromGitHub,
   callPackage,
-  zig_0_15,
+  zig,
   optimizeLevel ? "ReleaseFast",
 }: let
-  zig_hook = zig_0_15.hook.overrideAttrs {
+  zig_hook = zig.hook.overrideAttrs {
     zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
   };
 in
   stdenv.mkDerivation rec {
     pname = "zscene";
     # renovate: datasource=github-releases depName=adworacz/zscene
-    version = "0.4";
+    version = "0.5";
 
     src = fetchFromGitHub {
       owner = "adworacz";
       repo = "zscene";
       rev = "refs/tags/${version}";
-      hash = "sha256-qTWYPhXjXRwSaVmF8OWwCwQAxwZAQ/R+wL0wXH7tOfo=";
+      hash = "sha256-QAW5McPiy5nWiPalBZm/yY+mLzj7eHypdMikBXG0hF8=";
     };
 
     nativeBuildInputs = [
