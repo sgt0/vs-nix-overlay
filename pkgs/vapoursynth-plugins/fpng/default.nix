@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   pname = "fpng";
   # renovate: datasource=github-releases depName=Mikewando/vsfpng
-  version = "1.1";
+  version = "1.2";
 
   src = fetchFromGitHub {
     owner = "Mikewando";
     repo = "vsfpng";
     rev = "refs/tags/${version}";
-    hash = "sha256-yfh/Rb0SQu2vDXHUbf/PE/th9Eim+CsMlQ/6jOy/lRk=";
+    hash = "sha256-+OYUAp6T+ZGSFixw7W/QsqXVlPYea83WV88EVsI11KM=";
   };
 
   nativeBuildInputs = [
