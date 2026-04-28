@@ -2,24 +2,26 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  autoreconfHook,
+  meson,
+  ninja,
   pkg-config,
   vapoursynth,
 }:
 stdenv.mkDerivation rec {
   pname = "fh";
   # renovate: datasource=github-releases depName=dubhater/vapoursynth-fieldhint
-  version = "3";
+  version = "5";
 
   src = fetchFromGitHub {
     owner = "dubhater";
     repo = "vapoursynth-fieldhint";
     rev = "refs/tags/v${version}";
-    hash = "sha256-c0/59NQDINM1WnkcUMB6ItxgRA+OV5dEn6BxFG7UQmg=";
+    hash = "sha256-NnSPGh60VdhE7W8lJ35KQdQnSTl8XMlVZ5wtLTEqzTo=";
   };
 
   nativeBuildInputs = [
-    autoreconfHook
+    meson
+    ninja
     pkg-config
   ];
 
@@ -27,10 +29,42 @@ stdenv.mkDerivation rec {
     vapoursynth
   ];
 
-  postInstall = ''
-    mkdir -p $out/lib/vapoursynth
-    ln -s $out/lib/libfieldhint${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libfieldhint${stdenv.hostPlatform.extensions.sharedLibrary}
+  postPatch = ''
+        substituteInPlace meson.build \
+          --replace-fail \
+            "incdir = include_directories(
+        run_command(
+            find_program('python', 'python3'),
+            '-c',
+            'import vapoursynth as vs; print(vs.get_include())',
+            check: true,
+        ).stdout().strip(),
+    )
+
+    py = import('python').find_installation(pure: false)
+
+    shared_module('fieldhint',
+        files('src/fieldhint.c'),
+        gnu_symbol_visibility: 'hidden',
+        include_directories: incdir,
+        install: true,
+        install_dir: py.get_install_dir() / 'vapoursynth/plugins',
+        name_prefix: ''',
+    )" \
+            "vapoursynth_dep = dependency('vapoursynth')
+
+    shared_module('fieldhint',
+        files('src/fieldhint.c'),
+        dependencies: vapoursynth_dep,
+        gnu_symbol_visibility: 'hidden',
+        install: true,
+        install_dir: get_option('libdir'),
+        name_prefix: ''',
+    )"
   '';
+
+  mesonBuildType = "release";
+  mesonFlags = ["--libdir=${placeholder "out"}/lib/vapoursynth"];
 
   meta = with lib; {
     description = "FieldHint Plugin";
