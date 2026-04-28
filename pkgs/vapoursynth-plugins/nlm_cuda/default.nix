@@ -1,6 +1,5 @@
 {
   lib,
-  stdenv,
   fetchFromGitHub,
   cmake,
   cudaPackages_12,
@@ -8,25 +7,26 @@
   config,
   cudaSupport ? config.cudaSupport,
 }:
-stdenv.mkDerivation rec {
+cudaPackages_12.backendStdenv.mkDerivation rec {
   pname = "nlm_cuda";
   # renovate: datasource=github-releases depName=AmusementClub/vs-nlm-cuda
-  version = "3";
+  version = "4";
 
   src = fetchFromGitHub {
     owner = "AmusementClub";
     repo = "vs-nlm-cuda";
     rev = "refs/tags/v${version}";
-    hash = "sha256-HEZyiBsq61jfo0wmdATIRrybbivmD/YwH/Tdr70zzlc=";
+    hash = "sha256-LXYLzZ8Gu3Qomus65eIAbP/p3eDdIBkCwnUHq5O/ia8=";
   };
 
   nativeBuildInputs = [
     cmake
+    cudaPackages_12.cuda_nvcc
   ];
 
   buildInputs = [
-    cudaPackages_12.cudatoolkit
     cudaPackages_12.cuda_cudart
+    cudaPackages_12.cuda_cccl
     vapoursynth
   ];
 
@@ -39,7 +39,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     mkdir $out/lib/vapoursynth
-    ln -s $out/lib/libvsnlm_cuda${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth
+    ln -s $out/lib/libvsnlm_cuda${cudaPackages_12.backendStdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth
   '';
 
   meta = with lib; {
