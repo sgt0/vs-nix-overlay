@@ -53,30 +53,30 @@ stdenv.mkDerivation rec {
   ];
 
   postPatch = ''
-    substituteInPlace meson.build \
-      --replace-fail "py = import('python').find_installation()
-vapoursynth_include_command = run_command(
-    py,
-    '-c',
-    'import vapoursynth as vs; print(vs.get_include())',
-    check: true,
-)
-vapoursynth_include = include_directories(vapoursynth_include_command.stdout().strip())" \
-      "vapoursynth_dep = dependency('vapoursynth')
-vapoursynth_include = include_directories(vapoursynth_dep.get_variable(pkgconfig: 'includedir'))" \
-      --replace-fail "py.get_install_dir(pure: false) / 'vapoursynth' / 'plugins'" "get_option('libdir') / 'vapoursynth'"
+        substituteInPlace meson.build \
+          --replace-fail "py = import('python').find_installation()
+    vapoursynth_include_command = run_command(
+        py,
+        '-c',
+        'import vapoursynth as vs; print(vs.get_include())',
+        check: true,
+    )
+    vapoursynth_include = include_directories(vapoursynth_include_command.stdout().strip())" \
+          "vapoursynth_dep = dependency('vapoursynth')
+    vapoursynth_include = include_directories(vapoursynth_dep.get_variable(pkgconfig: 'includedir'))" \
+          --replace-fail "py.get_install_dir(pure: false) / 'vapoursynth' / 'plugins'" "get_option('libdir') / 'vapoursynth'"
 
-    substituteInPlace subprojects/zimg/meson.build \
-      --replace-fail "py = import('python').find_installation()
-vapoursynth_include_command = run_command(
-    py,
-    '-c',
-    'import vapoursynth as vs; print(vs.get_include())',
-    check: true,
-)
-vapoursynth_include = include_directories(vapoursynth_include_command.stdout().strip())" \
-      "vapoursynth_dep = dependency('vapoursynth')
-vapoursynth_include = include_directories(vapoursynth_dep.get_variable(pkgconfig: 'includedir'))"
+        substituteInPlace subprojects/zimg/meson.build \
+          --replace-fail "py = import('python').find_installation()
+    vapoursynth_include_command = run_command(
+        py,
+        '-c',
+        'import vapoursynth as vs; print(vs.get_include())',
+        check: true,
+    )
+    vapoursynth_include = include_directories(vapoursynth_include_command.stdout().strip())" \
+          "vapoursynth_dep = dependency('vapoursynth')
+    vapoursynth_include = include_directories(vapoursynth_dep.get_variable(pkgconfig: 'includedir'))"
   '';
 
   mesonBuildType = "release";
