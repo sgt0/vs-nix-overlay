@@ -49,6 +49,7 @@ with pkgs; let
     vapoursynthPlugins.vszip
     vapoursynthPlugins.warp
     vapoursynthPlugins.webp
+    vapoursynthPlugins.zivtc
     vapoursynthPlugins.zscene
     vapoursynthPlugins.zsmooth
   ];
