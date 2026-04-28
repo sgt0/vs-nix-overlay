@@ -21,9 +21,23 @@
         else {})
       set);
 
+    isBuildable = pkgs: p: let
+      licenseFromMeta = p.meta.license or [];
+      licenseList =
+        if builtins.isList licenseFromMeta
+        then licenseFromMeta
+        else [licenseFromMeta];
+    in
+      pkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform p
+      && !(p.meta.broken or false)
+      && builtins.all (license: license.free or true) licenseList;
+
+    isCacheable = p: !(p.preferLocalBuild or false);
+
     systems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
     outputs = flake-utils.lib.eachSystem systems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
+      defaultPkgs = import ./default.nix {inherit pkgs;};
       packages =
         nixpkgs.lib.concatMapAttrs
         (k: v:
@@ -49,7 +63,29 @@
                 // v;
             }
           else v)
-        (import ./default.nix {inherit pkgs;});
+        defaultPkgs;
+
+      ciPackages = let
+        flatPlugins =
+          nixpkgs.lib.concatMapAttrs
+          (k: v:
+            if nixpkgs.lib.isDerivation v
+            then {"vapoursynthPlugins-${k}" = v;}
+            else {})
+          (defaultPkgs.vapoursynthPlugins or {});
+
+        flatVapoursynth =
+          nixpkgs.lib.filterAttrs
+          (k: v:
+            nixpkgs.lib.isDerivation v
+            && nixpkgs.lib.hasPrefix "vapoursynth_" k)
+          defaultPkgs;
+
+        allPkgs = flatVapoursynth // flatPlugins;
+      in
+        nixpkgs.lib.filterAttrs
+        (_: v: isBuildable pkgs v && isCacheable v)
+        allPkgs;
 
       mkPluginCheck = {
         pluginName,
@@ -74,7 +110,7 @@
           touch $out
         '';
     in {
-      inherit packages;
+      inherit packages ciPackages;
 
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
