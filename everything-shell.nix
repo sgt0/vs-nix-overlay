@@ -42,6 +42,7 @@ with pkgs; let
     vapoursynthPlugins.retinex
     vapoursynthPlugins.rgvs
     vapoursynthPlugins.scxvid
+    vapoursynthPlugins.sneedif
     vapoursynthPlugins.tivtc
     vapoursynthPlugins.tmedian
     vapoursynthPlugins.trt

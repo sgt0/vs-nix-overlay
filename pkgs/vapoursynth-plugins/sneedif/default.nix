@@ -13,13 +13,13 @@
 stdenv.mkDerivation rec {
   pname = "sneedif";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF extractVersion=^R(?<version>.+)$
-  version = "3";
+  version = "4.2";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-SNEEDIF";
     rev = "refs/tags/R${version}";
-    hash = "sha256-EaX4G6S/BN4g63YFiO/jc+Nx9K0SDiNS0I5td1MRip0=";
+    hash = "sha256-LmSANVwS6g5575Xsms9cwg+9SikNObZ/kgdh+sh/PAw=";
   };
 
   strictDeps = true;
@@ -39,7 +39,26 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace meson.build \
-      --replace-fail "dependency('boost', modules : ['filesystem'], static : true)" "dependency('boost', modules : ['filesystem'], static : false)"
+      --replace-fail \
+        "py = import('python').find_installation(pure: false)
+
+r = run_command(
+    py,
+    '-c',
+    'import vapoursynth as vs; print(vs.get_include())',
+    check: true,
+)
+inc_vs = include_directories(r.stdout().strip())" \
+        "vapoursynth_dep = dependency('vapoursynth')" \
+      --replace-fail \
+        "deps = [boost_dep, opencl_dep]" \
+        "deps = [boost_dep, opencl_dep, vapoursynth_dep]" \
+      --replace-fail \
+        "include_directories : inc_vs," \
+        "" \
+      --replace-fail \
+        "install_dir: py.get_install_dir() / 'vapoursynth/plugins'," \
+        "install_dir: get_option('libdir'),"
   '';
 
   mesonBuildType = "release";
@@ -58,7 +77,6 @@ stdenv.mkDerivation rec {
     description = "Setsugen No Ensemble of Edge Directed Interpolation Functions";
     homepage = "hhttps://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF";
     license = licenses.wtfpl;
-    platforms = platforms.all;
-    broken = true; # Build fails with latest OpenCL.
+    platforms = platforms.x86;
   };
 }
