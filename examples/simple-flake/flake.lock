@@ -82,11 +82,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776779513,
-        "narHash": "sha256-ZB7myogvaWFDJF42bypIyJPWPVrYkcGuZCTzOksryVc=",
+        "lastModified": 1777344894,
+        "narHash": "sha256-Y/jsHLMNdf9aztYRsosy7XnFL3qUH70AWEK1TrKon8U=",
         "owner": "sgt0",
         "repo": "vs-nix-overlay",
-        "rev": "8a92217807759024e1710c63e4ff119b875cabb0",
+        "rev": "1c331e093db4e41e1194346c426ee4641538d685",
         "type": "github"
       },
       "original": {
