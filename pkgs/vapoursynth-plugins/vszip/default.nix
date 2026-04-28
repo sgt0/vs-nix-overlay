@@ -3,10 +3,10 @@
   stdenv,
   fetchFromGitHub,
   callPackage,
-  zig,
+  zig_0_15,
   optimizeLevel ? "ReleaseFast",
 }: let
-  zig_hook = zig.hook.overrideAttrs {
+  zig_hook = zig_0_15.hook.overrideAttrs {
     zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
   };
 in
