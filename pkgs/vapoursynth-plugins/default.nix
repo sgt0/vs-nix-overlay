@@ -2,10 +2,20 @@
   lib,
   newScope,
   config,
+  zig_0_15,
+  zigpkgs ? null,
 }:
 lib.makeScope newScope (self:
     with self;
-      {
+      (lib.optionalAttrs (zigpkgs != null) {
+        zig_0_15 =
+          zigpkgs."0.15.2"
+          // {
+            hook = zig_0_15.hook.override {zig = zigpkgs."0.15.2";};
+          };
+        zig = zigpkgs."0.15.2";
+      })
+      // {
         adg = callPackage ./adg {};
 
         # Broken: depends on LLVM 15 which is EoL and has been removed from nixpkgs.

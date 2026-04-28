@@ -1,4 +1,7 @@
-{pkgs ? import <nixpkgs> {}}: {
+{
+  pkgs ? import <nixpkgs> {},
+  zigpkgs ? null,
+}: {
   inherit
     (rec {
       vapoursynthPackages = pkgs.lib.recurseIntoAttrs (pkgs.callPackage ./pkgs/vapoursynth {});
@@ -21,5 +24,5 @@
     vapoursynth_73
     ;
 
-  vapoursynthPlugins = pkgs.lib.recurseIntoAttrs (pkgs.callPackage ./pkgs/vapoursynth-plugins {});
+  vapoursynthPlugins = pkgs.lib.recurseIntoAttrs (pkgs.callPackage ./pkgs/vapoursynth-plugins {inherit zigpkgs;});
 }

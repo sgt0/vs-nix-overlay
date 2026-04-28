@@ -5,11 +5,19 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
+    zig-overlay = {
+      url = "github:mitchellh/zig-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
+    zig-overlay,
     ...
   }: let
     attrDerivations = set: path: (nixpkgs.lib.concatMapAttrs
@@ -49,7 +57,10 @@
                 // v;
             }
           else v)
-        (import ./default.nix {inherit pkgs;});
+        (import ./default.nix {
+          inherit pkgs;
+          zigpkgs = zig-overlay.packages.${system};
+        });
 
       mkPluginCheck = {
         pluginName,
