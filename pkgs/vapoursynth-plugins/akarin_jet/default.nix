@@ -13,13 +13,13 @@
 stdenv.mkDerivation rec {
   pname = "akarin_jet";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/akarin-vapoursynth-plugin
-  version = "1.2.0";
+  version = "1.4.0";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "akarin-vapoursynth-plugin";
     rev = "refs/tags/v${version}";
-    hash = "sha256-xXJ70I+gVNzijVJjly4n7/LXrS78ICttWm2Q4Q8JZiI=";
+    hash = "sha256-g4KgEYS7s7IeJkx1ww1+2XxgkOW2uHmE6sIyDyVF6yE=";
   };
 
   nativeBuildInputs = [
@@ -38,8 +38,9 @@ stdenv.mkDerivation rec {
     ++ lib.optional stdenv.hostPlatform.isDarwin (darwinMinVersionHook "26.0");
 
   postPatch = ''
+    sed -i "/^py = /,/^incdir += inc_vs$/c\incdir += include_directories('${vapoursynth}/include/vapoursynth')" meson.build
     substituteInPlace meson.build \
-      --replace-fail "vapoursynth_dep.get_pkgconfig_variable('libdir')" "get_option('libdir')"
+      --replace-fail "install: false" "install: true, install_dir: get_option('libdir') / 'vapoursynth'"
   '';
 
   mesonBuildType = "release";
