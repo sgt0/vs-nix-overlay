@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   pname = "edgemasks";
   # renovate: datasource=github-releases depName=HolyWu/VapourSynth-EdgeMasks extractVersion=^r(?<version>.+)$
-  version = "4";
+  version = "4.1";
 
   src = fetchFromGitHub {
     owner = "HolyWu";
     repo = "VapourSynth-EdgeMasks";
     rev = "refs/tags/r${version}";
-    hash = "sha256-H9kAmgoktxmxKWSG9ZBdxY4vGONlxOXwadNJdnIEjUI=";
+    hash = "sha256-6Ub6f8eLS2FdFKdxZPtTe59I9H/TYHvE+0w/b6e9ON4=";
   };
 
   nativeBuildInputs = [
