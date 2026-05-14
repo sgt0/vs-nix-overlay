@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   pname = "awarp";
   # renovate: datasource=github-releases depName=HolyWu/VapourSynth-AWarp extractVersion=^r(?<version>.+)$
-  version = "3";
+  version = "3.1";
 
   src = fetchFromGitHub {
     owner = "HolyWu";
     repo = "VapourSynth-AWarp";
     rev = "refs/tags/r${version}";
-    hash = "sha256-GiP/BM431AfKGCGasotv0EC5w70l8tKOesS2V01QII0=";
+    hash = "sha256-daFgCAj1m/HGpIG1vqsEEE7eGuGBRdiQiC5gHLJWTfE=";
   };
 
   nativeBuildInputs = [
