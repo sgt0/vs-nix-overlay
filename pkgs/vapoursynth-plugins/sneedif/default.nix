@@ -13,13 +13,13 @@
 stdenv.mkDerivation rec {
   pname = "sneedif";
   # renovate: datasource=github-releases depName=Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF extractVersion=^R(?<version>.+)$
-  version = "4.2";
+  version = "4.3";
 
   src = fetchFromGitHub {
     owner = "Jaded-Encoding-Thaumaturgy";
     repo = "vapoursynth-SNEEDIF";
     rev = "refs/tags/R${version}";
-    hash = "sha256-LmSANVwS6g5575Xsms9cwg+9SikNObZ/kgdh+sh/PAw=";
+    hash = "sha256-HyrZkxa6nyV4f6lNTl2//eaXTLwxj/q/bljRR5WGTSk=";
   };
 
   strictDeps = true;
@@ -42,23 +42,15 @@ stdenv.mkDerivation rec {
       --replace-fail \
         "py = import('python').find_installation(pure: false)
 
-r = run_command(
-    py,
-    '-c',
-    'import vapoursynth as vs; print(vs.get_include())',
-    check: true,
-)
+r = run_command(py, '-c', 'import vapoursynth as vs; print(vs.get_include())', check: true)
 inc_vs = include_directories(r.stdout().strip())" \
         "vapoursynth_dep = dependency('vapoursynth')" \
       --replace-fail \
         "deps = [boost_dep, opencl_dep]" \
         "deps = [boost_dep, opencl_dep, vapoursynth_dep]" \
       --replace-fail \
-        "include_directories : inc_vs," \
-        "" \
-      --replace-fail \
-        "install_dir: py.get_install_dir() / 'vapoursynth/plugins'," \
-        "install_dir: get_option('libdir'),"
+        "include_directories: inc_vs," \
+        ""
   '';
 
   mesonBuildType = "release";
@@ -66,9 +58,9 @@ inc_vs = include_directories(r.stdout().strip())" \
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/lib/vapoursynth
+    mkdir -p $out/lib/vapoursynth $out/share/SNEEDIF
     install -D libsneedif${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libsneedif${stdenv.hostPlatform.extensions.sharedLibrary}
-    install -D ../asset/nnedi3_weights.bin $out/lib/vapoursynth/nnedi3_weights.bin
+    install -D ../asset/nnedi3_weights.bin $out/share/SNEEDIF/nnedi3_weights.bin
 
     runHook postInstall
   '';
