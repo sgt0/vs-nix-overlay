@@ -11,7 +11,7 @@
 stdenv.mkDerivation rec {
   pname = "eedi3m";
   # renovate: datasource=github-releases depName=HomeOfVapourSynthEvolution/VapourSynth-EEDI3 extractVersion=^r(?<version>.+)$
-  version = "9.1";
+  version = "10";
 
   src = fetchFromGitHub {
     owner = "HomeOfVapourSynthEvolution";
