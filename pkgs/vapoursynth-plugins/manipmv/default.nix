@@ -13,7 +13,7 @@ in
   stdenv.mkDerivation rec {
     pname = "manipmv";
     # renovate: datasource=github-releases depName=Mikewando/manipulate-motion-vectors
-    version = "1.3.0";
+    version = "1.4.0";
 
     src = fetchFromGitHub {
       owner = "Mikewando";
