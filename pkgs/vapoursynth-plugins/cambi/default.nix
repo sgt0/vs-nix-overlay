@@ -7,16 +7,16 @@
 rustPlatform.buildRustPackage rec {
   pname = "cambi";
   # renovate: datasource=github-releases depName=sgt0/vapoursynth-cambi
-  version = "1.1.5";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "sgt0";
     repo = "vapoursynth-cambi";
     rev = "refs/tags/v${version}";
-    hash = "sha256-om4UfqTfMi09yWKYtp/4msScTmbg9u3rcJ/ikdyIAqM=";
+    hash = "sha256-ZUM6ImXrpAzYloVTM4euaEjmqCANNAQauFuZZmryjbI=";
   };
 
-  cargoHash = "sha256-WmdA87EyGNiI71kwONSCgfODOLo7bVCSwTjCSzqRaLI=";
+  cargoHash = "sha256-Ymk6VrFp3ncJekQ4zsEAvOr8r9AWEVVzVgdHdY07iF8=";
 
   postInstall = ''
     mkdir $out/lib/vapoursynth
