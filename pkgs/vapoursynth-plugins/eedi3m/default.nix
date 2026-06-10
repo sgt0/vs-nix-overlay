@@ -11,13 +11,13 @@
 stdenv.mkDerivation rec {
   pname = "eedi3m";
   # renovate: datasource=github-releases depName=HomeOfVapourSynthEvolution/VapourSynth-EEDI3 extractVersion=^r(?<version>.+)$
-  version = "9.1";
+  version = "10";
 
   src = fetchFromGitHub {
     owner = "HomeOfVapourSynthEvolution";
     repo = "VapourSynth-EEDI3";
     rev = "refs/tags/r${version}";
-    hash = "sha256-K4kzHr1MhdNZS2j91ZixyXW3q0ukX1OM6bSZmdmLSTk=";
+    hash = "sha256-figlALEzlATwuwFNo5rGcMjunt2W5R/hQHjwsveNbdY=";
   };
 
   nativeBuildInputs = [
