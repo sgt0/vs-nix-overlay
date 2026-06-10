@@ -7,12 +7,12 @@
   ninja,
   pkg-config,
   vapoursynth,
-  xxHash,
+  xxhash,
 }:
 stdenv.mkDerivation rec {
   pname = "bs";
   # renovate: datasource=github-releases depName=vapoursynth/bestsource extractVersion=^R(?<version>.+)$
-  version = "17";
+  version = "18";
 
   outputs = [
     "out"
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     owner = "vapoursynth";
     repo = "bestsource";
     rev = "refs/tags/R${version}";
-    hash = "sha256-f3SSGLzW9GhKjDO3WelDOvg2aD+ka2cdvAcQCFX8rDk=";
+    hash = "sha256-tF0rJT1cH6p71RP4w0If9lP1ZVRIWKoIyxEg1/rscbg=";
     fetchSubmodules = true;
   };
 
@@ -36,8 +36,26 @@ stdenv.mkDerivation rec {
   buildInputs = [
     ffmpeg.dev
     vapoursynth
-    xxHash
+    xxhash
   ];
+
+  postPatch = ''
+        substituteInPlace meson.build \
+          --replace-fail \
+            "incdir = include_directories(
+        run_command(
+            find_program('python', 'python3'),
+            '-c',
+            'import vapoursynth as vs; print(vs.get_include())',
+            check: true,
+        ).stdout().strip(),
+        'AviSynthPlus/avs_core/include'
+    )" \
+            "deps += dependency('vapoursynth')
+    incdir = include_directories(
+        'AviSynthPlus/avs_core/include'
+    )"
+  '';
 
   mesonBuildType = "release";
 
