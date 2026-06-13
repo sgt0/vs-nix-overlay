@@ -13,7 +13,7 @@ in
   stdenv.mkDerivation rec {
     pname = "zsmooth";
     # renovate: datasource=github-releases depName=adworacz/zsmooth
-    version = "0.15.3";
+    version = "0.16.0";
 
     src = fetchFromGitHub {
       owner = "adworacz";
