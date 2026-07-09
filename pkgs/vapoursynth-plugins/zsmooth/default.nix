@@ -1,44 +1,62 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
-  callPackage,
-  zig_0_15,
-  optimizeLevel ? "ReleaseFast",
+  fetchurl,
+  unzip,
 }: let
-  zig_hook = zig_0_15.hook.overrideAttrs {
-    zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel}";
+  assets = {
+    x86_64-linux = {
+      suffix = "x86_64-linux-gnu";
+      hash = "sha256-yVWTZ/S9r4zDQIzIJx5DjFFhlrXt6kMFpp3tPi10ja4=";
+    };
+    aarch64-linux = {
+      suffix = "aarch64-linux-gnu";
+      hash = "sha256-0smEUflpCWWJxyfQbo8qd5y8izDA81ZBmhXa1AMmLKs=";
+    };
+    x86_64-darwin = {
+      suffix = "x86_64-macos";
+      hash = "sha256-jiTW2lsqbIKP3G8YthqW+zD/AkqDWmHYxZ8VAzdAHT0=";
+    };
+    aarch64-darwin = {
+      suffix = "aarch64-macos";
+      hash = "sha256-vkC893d6LZKdSA3/GuVUAqP3t5NWChpmoSzhen0yHEs=";
+    };
   };
+  asset =
+    assets.${stdenv.hostPlatform.system}
+    or (throw "zsmooth: unsupported system ${stdenv.hostPlatform.system}");
 in
   stdenv.mkDerivation rec {
     pname = "zsmooth";
     # renovate: datasource=github-releases depName=adworacz/zsmooth
-    version = "0.15.3";
+    version = "0.19.0";
 
-    src = fetchFromGitHub {
-      owner = "adworacz";
-      repo = "zsmooth";
-      rev = "refs/tags/${version}";
-      hash = "sha256-EUAjpVU9rn5jj2tMtE+UhGz3ax4bRxze4s6coA6noiY=";
+    src = fetchurl {
+      url = "https://github.com/adworacz/zsmooth/releases/download/${version}/zsmooth-${asset.suffix}.zip";
+      inherit (asset) hash;
     };
 
     nativeBuildInputs = [
-      zig_hook
+      unzip
     ];
 
-    postConfigure = ''
-      ln -s ${callPackage ./deps.nix {}} $ZIG_GLOBAL_CACHE_DIR/p
-    '';
+    sourceRoot = ".";
 
-    postInstall = ''
+    installPhase = ''
+      runHook preInstall
+
+      install -Dm644 libzsmooth${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/libzsmooth${stdenv.hostPlatform.extensions.sharedLibrary}
       mkdir -p $out/lib/vapoursynth
       ln -s $out/lib/libzsmooth${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/vapoursynth/libzsmooth${stdenv.hostPlatform.extensions.sharedLibrary}
+
+      runHook postInstall
     '';
 
     meta = with lib; {
       description = "Cross-platform smoothing functions written in Zig";
       homepage = "https://github.com/adworacz/zsmooth";
       license = licenses.mit;
-      platforms = platforms.all;
+      sourceProvenance = [sourceTypes.binaryNativeCode];
+      platforms = attrNames assets;
     };
   }
