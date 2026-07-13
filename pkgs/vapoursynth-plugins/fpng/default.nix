@@ -10,7 +10,7 @@
 stdenv.mkDerivation rec {
   pname = "fpng";
   # renovate: datasource=github-releases depName=Mikewando/vsfpng
-  version = "1.2";
+  version = "1.3";
 
   src = fetchFromGitHub {
     owner = "Mikewando";
