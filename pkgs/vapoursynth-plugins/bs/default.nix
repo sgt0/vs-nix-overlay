@@ -26,7 +26,7 @@ in
   stdenv.mkDerivation rec {
     pname = "bs";
     # renovate: datasource=github-releases depName=vapoursynth/bestsource extractVersion=^R(?<version>.+)$
-    version = "19";
+    version = "20";
 
     outputs = [
       "out"
@@ -37,7 +37,7 @@ in
       owner = "vapoursynth";
       repo = "bestsource";
       rev = "refs/tags/R${version}";
-      hash = "sha256-qkbh6hKq2Q93Y54ZZe9AG/FhuLt5CEX1iYG3wkXDx78=";
+      hash = "sha256-KuzN0zk9NXm4R0nkBJKQd05w0u/ydCMUG8aBmI8lHvg=";
     };
 
     nativeBuildInputs = [
