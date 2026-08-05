@@ -29,7 +29,7 @@ in
   stdenv.mkDerivation rec {
     pname = "zsmooth";
     # renovate: datasource=github-releases depName=adworacz/zsmooth
-    version = "0.19.0";
+    version = "0.20.0";
 
     src = fetchurl {
       url = "https://github.com/adworacz/zsmooth/releases/download/${version}/zsmooth-${asset.suffix}.zip";
