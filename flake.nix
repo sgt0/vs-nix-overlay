@@ -34,7 +34,7 @@
 
     isCacheable = p: !(p.preferLocalBuild or false);
 
-    systems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
+    systems = ["aarch64-darwin" "aarch64-linux" "x86_64-linux"];
     outputs = flake-utils.lib.eachSystem systems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       defaultPkgs = import ./default.nix {inherit pkgs;};
