@@ -7,19 +7,19 @@
   assets = {
     x86_64-linux = {
       suffix = "x86_64-linux-gnu";
-      hash = "sha256-yVWTZ/S9r4zDQIzIJx5DjFFhlrXt6kMFpp3tPi10ja4=";
+      hash = "sha256-O0iV+bexNfxBiA0SAQp+iimGV3IsqDKC2ny7nbZjvDA=";
     };
     aarch64-linux = {
       suffix = "aarch64-linux-gnu";
-      hash = "sha256-0smEUflpCWWJxyfQbo8qd5y8izDA81ZBmhXa1AMmLKs=";
+      hash = "sha256-zEx6X11zsfNMQqDp5CHI8S34t9QWIRqLGf3heKcucQM=";
     };
     x86_64-darwin = {
       suffix = "x86_64-macos";
-      hash = "sha256-jiTW2lsqbIKP3G8YthqW+zD/AkqDWmHYxZ8VAzdAHT0=";
+      hash = "sha256-BO+nLwD85AcJBppz96dg7eZ+Oq9xTc5Ux17t8Ie+3qU=";
     };
     aarch64-darwin = {
       suffix = "aarch64-macos";
-      hash = "sha256-vkC893d6LZKdSA3/GuVUAqP3t5NWChpmoSzhen0yHEs=";
+      hash = "sha256-O2gv2T6tmwvS2PJwn7CvMLlFQfhEghOy8TKTnSt/P1Q=";
     };
   };
   asset =
@@ -29,7 +29,7 @@ in
   stdenv.mkDerivation rec {
     pname = "zsmooth";
     # renovate: datasource=github-releases depName=adworacz/zsmooth
-    version = "0.19.0";
+    version = "0.20.0";
 
     src = fetchurl {
       url = "https://github.com/adworacz/zsmooth/releases/download/${version}/zsmooth-${asset.suffix}.zip";
