@@ -10,7 +10,7 @@
 cudaPackages_12.backendStdenv.mkDerivation rec {
   pname = "nlm_cuda";
   # renovate: datasource=github-releases depName=AmusementClub/vs-nlm-cuda
-  version = "4";
+  version = "5";
 
   src = fetchFromGitHub {
     owner = "AmusementClub";
