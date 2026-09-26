@@ -10,7 +10,7 @@
 stdenv.mkDerivation rec {
   pname = "neo_f3kdb";
   # renovate: datasource=github-tags depName=HomeOfAviSynthPlusEvolution/neo_f3kdb extractVersion=^r(?<version>.+)$
-  version = "10";
+  version = "11";
 
   src = fetchFromGitHub {
     owner = "HomeOfAviSynthPlusEvolution";
