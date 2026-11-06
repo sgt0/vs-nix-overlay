@@ -4,24 +4,26 @@
   fetchFromGitHub,
   cmake,
   pkg-config,
+  python3,
   tbb,
   vapoursynth,
 }:
 stdenv.mkDerivation rec {
   pname = "neo_f3kdb";
   # renovate: datasource=github-tags depName=HomeOfAviSynthPlusEvolution/neo_f3kdb extractVersion=^r(?<version>.+)$
-  version = "10";
+  version = "11";
 
   src = fetchFromGitHub {
     owner = "HomeOfAviSynthPlusEvolution";
     repo = "neo_f3kdb";
     rev = "refs/tags/r${version}";
-    hash = "sha256-9aEJkK/5ObHJtPqf6CyB0JuqZbXvjZQArfgs+ChAt20=";
+    hash = "sha256-SH8m+homdsPMGgdK4vIu3QiDGHn/AFNZ0B54PCZoA2E=";
   };
 
   nativeBuildInputs = [
     cmake
     pkg-config
+    python3
   ];
 
   buildInputs = [
