@@ -10,13 +10,13 @@
 cudaPackages_12.backendStdenv.mkDerivation rec {
   pname = "nlm_cuda";
   # renovate: datasource=github-releases depName=AmusementClub/vs-nlm-cuda
-  version = "4";
+  version = "5";
 
   src = fetchFromGitHub {
     owner = "AmusementClub";
     repo = "vs-nlm-cuda";
     rev = "refs/tags/v${version}";
-    hash = "sha256-LXYLzZ8Gu3Qomus65eIAbP/p3eDdIBkCwnUHq5O/ia8=";
+    hash = "sha256-1IUyDncAiESr+iMe8/w6+o8PRAIBoTXB4D5Pzb4AjxY=";
   };
 
   nativeBuildInputs = [
