@@ -19,13 +19,13 @@ in
   stdenv.mkDerivation rec {
     pname = "placebo";
     # renovate: datasource=github-releases depName=Lypheo/vs-placebo
-    version = "2.0.4";
+    version = "2.0.5";
 
     src = fetchFromGitHub {
       owner = "Lypheo";
       repo = "vs-placebo";
       rev = "refs/tags/${version}";
-      hash = "sha256-vF+zuENaH/D4LuF6MoXRBT2DbwBKbZ+SKy9lUZYizLk=";
+      hash = "sha256-Z+BwoaHXYcXo7uXLcRSMCe1xjSKxXkCL1Nb7jOBJZI4=";
     };
 
     nativeBuildInputs = [
