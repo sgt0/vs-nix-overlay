@@ -10,7 +10,7 @@
 stdenv.mkDerivation rec {
   pname = "edgemasks";
   # renovate: datasource=github-releases depName=HolyWu/VapourSynth-EdgeMasks extractVersion=^r(?<version>.+)$
-  version = "4.1";
+  version = "5";
 
   src = fetchFromGitHub {
     owner = "HolyWu";
