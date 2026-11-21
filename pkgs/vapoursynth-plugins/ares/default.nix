@@ -10,7 +10,7 @@
 stdenv.mkDerivation rec {
   pname = "ares";
   # renovate: datasource=github-tags depName=ropagr/VapourSynth-AudioResample
-  version = "0.4.0";
+  version = "0.4.1";
 
   src = fetchFromGitHub {
     owner = "ropagr";
